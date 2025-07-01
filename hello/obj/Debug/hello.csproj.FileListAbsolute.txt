@@ -1,0 +1,8 @@
+D:\Workspace\CSharp\hello\bin\Debug\hello.exe.config
+D:\Workspace\CSharp\hello\bin\Debug\hello.exe
+D:\Workspace\CSharp\hello\bin\Debug\hello.pdb
+D:\Workspace\CSharp\hello\obj\Debug\hello.csproj.AssemblyReference.cache
+D:\Workspace\CSharp\hello\obj\Debug\hello.csproj.CoreCompileInputs.cache
+D:\Workspace\CSharp\hello\obj\Debug\hello.exe
+D:\Workspace\CSharp\hello\obj\Debug\hello.pdb
+D:\Workspace\CSharp\hello\obj\Debug\hello.exe.config

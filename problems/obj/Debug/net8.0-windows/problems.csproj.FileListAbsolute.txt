@@ -1,0 +1,16 @@
+D:\Workspace\CSharp\problems\bin\Debug\net8.0-windows\problems.exe
+D:\Workspace\CSharp\problems\bin\Debug\net8.0-windows\problems.deps.json
+D:\Workspace\CSharp\problems\bin\Debug\net8.0-windows\problems.runtimeconfig.json
+D:\Workspace\CSharp\problems\bin\Debug\net8.0-windows\problems.dll
+D:\Workspace\CSharp\problems\bin\Debug\net8.0-windows\problems.pdb
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.Form1.resources
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.csproj.GenerateResource.cache
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.AssemblyInfoInputs.cache
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.AssemblyInfo.cs
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.csproj.CoreCompileInputs.cache
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.dll
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\refint\problems.dll
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.pdb
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\problems.genruntimeconfig.cache
+D:\Workspace\CSharp\problems\obj\Debug\net8.0-windows\ref\problems.dll
