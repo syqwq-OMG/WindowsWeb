@@ -1,0 +1,52 @@
+[
+  {
+    "FileName": "image1.jpg",
+    "Category": "Landscape",
+    "Author": "Photographer"
+  },
+  {
+    "FileName": "image2.png",
+    "Category": "Portrait",
+    "Author": "Photographer"
+  },
+  {
+    "FileName": "image3.gif",
+    "Category": "Wildlife",
+    "Author": "Photographer"
+  },
+  {
+    "FileName": "image4.jpg",
+    "Category": "Architectural",
+    "Author": "Designer"
+  },
+  {
+    "FileName": "image5.webp",
+    "Category": "Abstract",
+    "Author": "Artist"
+  },
+  {
+    "FileName": "image6.jpg",
+    "Category": "Other",
+    "Author": "Unknown"
+  },
+  {
+    "FileName": "image7.jpg",
+    "Category": "Landscape",
+    "Author": "Artist"
+  },
+  {
+    "FileName": "image8.jpg",
+    "Category": "Portrait",
+    "Author": "Artist"
+  },
+  {
+    "FileName": "image9.jpg",
+    "Category": "Wildlife",
+    "Author": "Unknown"
+  },
+  {
+    "FileName": "image10.jpg",
+    "Category": "Architectural",
+    "Author": "Photographer"
+  }
+]
