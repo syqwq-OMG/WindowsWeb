@@ -1,0 +1,237 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\yandeclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:yandeclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\thumbnailpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:thumbnailpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\thumbnailpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:thumbnailpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\safebooruclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:safebooruclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\konachanclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:konachanclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\ibooruclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:ibooruclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\booruimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:booruimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|d:\\workspace\\windowsweb\\wallpaperdownloader\\thumbnailpreview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:thumbnailpreview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\konachanclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BA6D3236-F58A-4CF5-86C0-7916F381759C}|WallpaperDownloader.csproj|solutionrelative:konachanclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SafebooruClient.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\SafebooruClient.cs",
+              "RelativeDocumentMoniker": "SafebooruClient.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\SafebooruClient.cs",
+              "RelativeToolTip": "SafebooruClient.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwDQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T09:04:45.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ThumbnailPreview.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\ThumbnailPreview.cs",
+              "RelativeDocumentMoniker": "ThumbnailPreview.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\ThumbnailPreview.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "ThumbnailPreview.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:40:41.228Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThumbnailPreview.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\ThumbnailPreview.cs",
+              "RelativeDocumentMoniker": "ThumbnailPreview.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\ThumbnailPreview.cs",
+              "RelativeToolTip": "ThumbnailPreview.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAB0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:44:02.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "YandeClient.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\YandeClient.cs",
+              "RelativeDocumentMoniker": "YandeClient.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\YandeClient.cs",
+              "RelativeToolTip": "YandeClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T09:02:03.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Form1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Form1.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T08:34:32.804Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAswNYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:20:55.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:20:29.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:20:47.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "KonachanClient.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\KonachanClient.cs",
+              "RelativeDocumentMoniker": "KonachanClient.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\KonachanClient.cs",
+              "RelativeToolTip": "KonachanClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:39:23.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IBooruClient.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\IBooruClient.cs",
+              "RelativeDocumentMoniker": "IBooruClient.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\IBooruClient.cs",
+              "RelativeToolTip": "IBooruClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:38:39.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BooruImage.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\BooruImage.cs",
+              "RelativeDocumentMoniker": "BooruImage.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\BooruImage.cs",
+              "RelativeToolTip": "BooruImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:36:46.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ThumbnailPreview.Designer.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\ThumbnailPreview.Designer.cs",
+              "RelativeDocumentMoniker": "ThumbnailPreview.Designer.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\ThumbnailPreview.Designer.cs",
+              "RelativeToolTip": "ThumbnailPreview.Designer.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAADwv0YAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:41:56.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KonachanClient.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\KonachanClient.cs",
+              "RelativeDocumentMoniker": "KonachanClient.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\WallpaperDownloader\\KonachanClient.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "KonachanClient.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T05:41:31.664Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
