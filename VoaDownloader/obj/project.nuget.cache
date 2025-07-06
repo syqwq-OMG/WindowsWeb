@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "csNkPoicrVk=",
+  "success": true,
+  "projectFilePath": "D:\\Workspace\\WindowsWeb\\VoaDownloader\\VoaDownloader.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\htmlagilitypack\\1.12.1\\htmlagilitypack.1.12.1.nupkg.sha512"
+  ],
+  "logs": []
+}
