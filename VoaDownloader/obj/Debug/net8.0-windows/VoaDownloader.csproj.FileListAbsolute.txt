@@ -18,3 +18,6 @@ D:\Workspace\WindowsWeb\VoaDownloader\obj\Debug\net8.0-windows\refint\VoaDownloa
 D:\Workspace\WindowsWeb\VoaDownloader\obj\Debug\net8.0-windows\VoaDownloader.pdb
 D:\Workspace\WindowsWeb\VoaDownloader\obj\Debug\net8.0-windows\VoaDownloader.genruntimeconfig.cache
 D:\Workspace\WindowsWeb\VoaDownloader\obj\Debug\net8.0-windows\ref\VoaDownloader.dll
+D:\Workspace\WindowsWeb\VoaDownloader\bin\Debug\net8.0-windows\MetroFramework.Design.dll
+D:\Workspace\WindowsWeb\VoaDownloader\bin\Debug\net8.0-windows\MetroFramework.Fonts.dll
+D:\Workspace\WindowsWeb\VoaDownloader\bin\Debug\net8.0-windows\MetroFramework.dll

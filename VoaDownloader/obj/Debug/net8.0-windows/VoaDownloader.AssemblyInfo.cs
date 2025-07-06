@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VoaDownloader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5577c390cfd64e8cef6fba9dbfb2e855e15675e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4be0e5a33d258532e64208f585c617dafaf90b5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("VoaDownloader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VoaDownloader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

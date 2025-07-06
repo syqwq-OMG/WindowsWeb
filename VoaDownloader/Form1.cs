@@ -2,24 +2,22 @@ using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
-using System.Net.Http; // Required for HttpClient
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VoaDownloader
 {
     public partial class Form1 : Form
     {
-        // A single, static HttpClient instance is recommended for performance.
         private static readonly HttpClient httpClient = new HttpClient();
-
         private const string BaseUrl = "https://www.21voa.com/";
-        private Dictionary<string, string> categoryLinks = new Dictionary<string, string>();
-        private Dictionary<string, string> articleLinks = new Dictionary<string, string>();
-        private string currentAudioUrl = "";
-        private string currentArticleUrl = ""; // Store the article URL to use as the Referer
+        private readonly Dictionary<string, string> categoryLinks = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> articleLinks = new Dictionary<string, string>();
 
         public Form1()
         {
@@ -28,40 +26,38 @@ namespace VoaDownloader
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            comboBox_Category.Enabled = false;
-            comboBox_Category.Text = "正在加载分类...";
+            SetControlsEnabled(false);
+            label_Status.Text = "正在加载分类...";
             try
             {
                 await LoadCategoriesAsync();
-
                 if (comboBox_Category.Items.Count > 0)
                 {
-                    comboBox_Category.Enabled = true;
                     comboBox_Category.SelectedIndex = 0;
-                    comboBox_Category.Text = comboBox_Category.Items[0].ToString();
-                }
-                else
-                {
-                    comboBox_Category.Text = "加载失败";
-                    MessageBox.Show("未能从网站加载任何分类，请检查网络或稍后重试。", "加载错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"加载分类列表失败，请检查网络连接并重启程序。\n错误信息: {ex.Message}", "严重错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboBox_Category.Text = "加载失败";
+                MessageBox.Show($"加载分类列表失败: {ex.Message}", "严重错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                label_Status.Text = "就绪";
+                SetControlsEnabled(true);
             }
         }
 
-        private async System.Threading.Tasks.Task LoadCategoriesAsync()
+        private async Task LoadCategoriesAsync()
         {
             var web = new HtmlWeb();
+
             var doc = await web.LoadFromWebAsync(BaseUrl);
             var categoryNodes = doc.DocumentNode.SelectNodes("//div[@id='lefter']/ul/li/a");
 
             if (categoryNodes != null)
             {
-                this.Invoke((MethodInvoker)delegate {
+                this.Invoke((MethodInvoker)delegate
+                {
                     comboBox_Category.Items.Clear();
                     categoryLinks.Clear();
                     foreach (var node in categoryNodes)
@@ -84,28 +80,27 @@ namespace VoaDownloader
 
         private async void button_Fetch_Click(object sender, EventArgs e)
         {
-            if (comboBox_Category.SelectedItem == null)
-            {
-                MessageBox.Show("请选择一个分类。");
-                return;
-            }
+            if (comboBox_Category.SelectedItem == null) return;
             string selectedCategory = comboBox_Category.SelectedItem.ToString();
             if (!categoryLinks.ContainsKey(selectedCategory)) return;
 
-            string categoryUrl = categoryLinks[selectedCategory];
-            int page = int.TryParse(textBox_Page.Text.Trim(), out int p) && p > 0 ? p : 1;
-            string pageUrl = page > 1 ? $"{categoryUrl.Replace(".html", "")}_{page}.html" : categoryUrl;
-
-            this.Text = "正在获取文章列表...";
-            button_Fetch.Enabled = false;
+            SetControlsEnabled(false);
+            label_Status.Text = "正在获取文章列表...";
+            progressBar.Value = 0;
+            checkedListBox_Articles.Items.Clear();
+            articleLinks.Clear();
+            richTextBox_Content.Clear();
+            checkBox_SelectAll.Checked = false;
 
             try
             {
+                string categoryUrl = categoryLinks[selectedCategory];
+                int page = (int)numericUpDown_Page.Value;
+                string pageUrl = page > 1 ? $"{categoryUrl.Replace(".html", "")}_{page}.html" : categoryUrl;
+
                 var web = new HtmlWeb();
+
                 var doc = await web.LoadFromWebAsync(pageUrl);
-                listBox_Articles.Items.Clear();
-                articleLinks.Clear();
-                richTextBox_Content.Clear();
                 var articleNodes = doc.DocumentNode.SelectNodes("//div[@class='list']/ul/li/a");
                 if (articleNodes != null)
                 {
@@ -118,166 +113,195 @@ namespace VoaDownloader
                             string fullLink = new Uri(new Uri(BaseUrl), link).ToString();
                             if (!articleLinks.ContainsKey(title))
                             {
-                                listBox_Articles.Items.Add(title);
                                 articleLinks[title] = fullLink;
+                                checkedListBox_Articles.Items.Add(title);
                             }
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("在此页面未找到文章列表。");
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"获取文章列表失败：{ex.Message}");
+                MessageBox.Show($"获取文章列表失败: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                this.Text = "VOA 英语资料下载器";
-                button_Fetch.Enabled = true;
+                label_Status.Text = "就绪";
+                SetControlsEnabled(true);
             }
         }
 
-        private async void listBox_Articles_SelectedIndexChanged(object sender, EventArgs e)
+        private async void checkedListBox_Articles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_Articles.SelectedItem == null) return;
-            string selectedTitle = listBox_Articles.SelectedItem.ToString();
-            if (!articleLinks.ContainsKey(selectedTitle)) return;
+            if (checkedListBox_Articles.SelectedItem == null) return;
+            string title = checkedListBox_Articles.SelectedItem.ToString();
+            if (!articleLinks.ContainsKey(title)) return;
 
-            currentArticleUrl = articleLinks[selectedTitle]; // Save the article URL for the Referer header
-
-            richTextBox_Content.Text = "正在加载文章内容，请稍候...";
-            button_Download.Enabled = false;
-            button_Download.Text = "下载内容";
-
+            richTextBox_Content.Text = "正在加载预览...";
             try
             {
-                var web = new HtmlWeb();
-                var doc = await web.LoadFromWebAsync(currentArticleUrl);
-
-                var contentNode = doc.DocumentNode.SelectSingleNode("//div[@class='content']");
-                richTextBox_Content.Text = contentNode != null ? WebUtility.HtmlDecode(contentNode.InnerText.Trim()) : "未能成功提取到文章内容。";
-
-                currentAudioUrl = "";
-                var scriptNodes = doc.DocumentNode.SelectNodes("//script");
-                if (scriptNodes != null)
-                {
-                    var mp3Regex = new Regex(@"mp3\s*:\s*""(https?://[^""]+\.mp3)""");
-                    foreach (var script in scriptNodes)
-                    {
-                        var match = mp3Regex.Match(script.InnerText);
-                        if (match.Success)
-                        {
-                            currentAudioUrl = match.Groups[1].Value;
-                            break;
-                        }
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(currentAudioUrl))
-                {
-                    button_Download.Enabled = true;
-                    button_Download.Text = "下载内容";
-                }
-                else
-                {
-                    button_Download.Enabled = false;
-                    button_Download.Text = "无音频文件";
-                }
+                var (content, _) = await GetArticleDetailsAsync(articleLinks[title]);
+                richTextBox_Content.Text = content ?? "无法加载预览内容。";
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"加载文章内容失败：{ex.Message}");
-                richTextBox_Content.Text = $"加载失败：{ex.Message}";
-                button_Download.Text = "加载失败";
+                richTextBox_Content.Text = $"加载预览失败: {ex.Message}";
             }
         }
 
-        // ==================== 核心修正点 ====================
-        // 使用HttpClient并添加所有必要的请求头来模拟浏览器
+        private void checkBox_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox_Articles.Items.Count; i++)
+            {
+                checkedListBox_Articles.SetItemChecked(i, checkBox_SelectAll.Checked);
+            }
+        }
+
         private async void button_Download_Click(object sender, EventArgs e)
         {
-            if (!button_Download.Enabled || string.IsNullOrWhiteSpace(currentAudioUrl))
+            var itemsToDownload = checkedListBox_Articles.CheckedItems.Cast<string>().ToList();
+            if (!itemsToDownload.Any())
             {
-                MessageBox.Show("当前状态无法下载，请选择一篇带有音频的文章。");
+                MessageBox.Show("请至少选择一篇文章进行下载。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             using (var fbd = new FolderBrowserDialog())
             {
-                fbd.Description = "请选择保存文本和音频的文件夹";
-                if (fbd.ShowDialog() != DialogResult.OK || string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                fbd.Description = "请选择一个用于保存所有下载内容的根文件夹";
+                if (fbd.ShowDialog() != DialogResult.OK) return;
+
+                SetControlsEnabled(false);
+                var baseSavePath = fbd.SelectedPath;
+                var failedDownloads = new List<string>();
+                var progress = new Progress<int>(value => progressBar.Value = value);
+
+                for (int i = 0; i < itemsToDownload.Count; i++)
                 {
+                    string title = itemsToDownload[i];
+                    label_Status.Text = $"({i + 1}/{itemsToDownload.Count}) 正在下载: {title}";
+                    progressBar.Value = 0; // 每个新文件下载前重置进度条
+
+                    if (!await DownloadSingleArticleAsync(title, articleLinks[title], baseSavePath, progress))
+                    {
+                        failedDownloads.Add(title);
+                    }
+                }
+
+                // 显示最终报告
+                var report = new StringBuilder();
+                report.AppendLine($"批量下载完成！共 {itemsToDownload.Count - failedDownloads.Count} 篇成功。");
+                if (failedDownloads.Any())
+                {
+                    report.AppendLine("\n以下文章下载失败:");
+                    foreach (var failed in failedDownloads) report.AppendLine($"- {failed}");
+                }
+                MessageBox.Show(report.ToString(), "下载报告", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                label_Status.Text = "就绪";
+                progressBar.Value = 0;
+                SetControlsEnabled(true);
+            }
+        }
+
+        // 核心下载逻辑，增加了IProgress<T>参数用于报告进度
+        private async Task<bool> DownloadSingleArticleAsync(string title, string articleUrl, string baseSavePath, IProgress<int> progress)
+        {
+            try
+            {
+                var (content, audioUrl) = await GetArticleDetailsAsync(articleUrl);
+                if (string.IsNullOrEmpty(content) || string.IsNullOrEmpty(audioUrl)) return false;
+
+                string sanitizedTitle = MakeValidFileName(title);
+                string articleFolderPath = Path.Combine(baseSavePath, sanitizedTitle);
+                Directory.CreateDirectory(articleFolderPath);
+
+                string textPath = Path.Combine(articleFolderPath, $"{sanitizedTitle}.txt");
+                string audioPath = Path.Combine(articleFolderPath, $"{sanitizedTitle}.mp3");
+
+                await File.WriteAllTextAsync(textPath, content, Encoding.UTF8);
+
+                var request = new HttpRequestMessage(HttpMethod.Get, audioUrl);
+                request.Headers.Add("Referer", articleUrl);
+
+                var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+                response.EnsureSuccessStatusCode();
+
+                // 调用带进度报告的流复制方法
+                await CopyToWithProgressAsync(response, audioPath, progress);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // 带有进度报告的流复制方法
+        private async Task CopyToWithProgressAsync(HttpResponseMessage response, string filePath, IProgress<int> progress)
+        {
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                long? totalBytes = response.Content.Headers.ContentLength;
+                if (!totalBytes.HasValue)
+                {
+                    await stream.CopyToAsync(fileStream); // 如果没有总长度信息，则直接复制
+                    progress.Report(100);
                     return;
                 }
 
-                button_Download.Enabled = false;
-                button_Download.Text = "下载中...";
-
-                try
+                long totalBytesRead = 0;
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                 {
-                    // --- 1. 保存文本文档 ---
-                    string title = MakeValidFileName(listBox_Articles.SelectedItem.ToString());
-                    string textPath = Path.Combine(fbd.SelectedPath, $"{title}.txt");
-                    using (StreamWriter writer = new StreamWriter(textPath, false, Encoding.UTF8))
-                    {
-                        await writer.WriteAsync(richTextBox_Content.Text);
-                    }
-
-                    // --- 2. 下载音频文件 ---
-                    string audioPath = Path.Combine(fbd.SelectedPath, $"{title}.mp3");
-
-                    // 创建一个请求消息，以便我们可以自定义所有内容
-                    var request = new HttpRequestMessage(HttpMethod.Get, currentAudioUrl);
-
-                    // 清除默认标头并添加从浏览器复制的精确标头
-                    request.Headers.Clear();
-                    request.Headers.Add("Accept", "*/*");
-                    request.Headers.Add("Accept-Language", "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7");
-
-                    // Referer是最重要的，它应该是文章页面，而不是mp3文件本身
-                    request.Headers.Add("Referer", currentArticleUrl);
-
-                    request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36");
-                    request.Headers.Add("Sec-Fetch-Dest", "video");
-                    request.Headers.Add("Sec-Fetch-Mode", "no-cors");
-                    request.Headers.Add("Sec-Fetch-Site", "same-origin");
-                    request.Headers.Add("sec-ch-ua", "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"");
-                    request.Headers.Add("sec-ch-ua-mobile", "?0");
-                    request.Headers.Add("sec-ch-ua-platform", "\"Windows\"");
-
-                    // 发送定制的请求
-                    HttpResponseMessage response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-                    response.EnsureSuccessStatusCode();
-
-                    // 以流的方式写入文件，以处理大文件
-                    using (var stream = await response.Content.ReadAsStreamAsync())
-                    using (var fileStream = new FileStream(audioPath, FileMode.Create, FileAccess.Write, FileShare.None))
-                    {
-                        await stream.CopyToAsync(fileStream);
-                    }
-
-                    MessageBox.Show($"下载完成！\n\n文本保存至: {textPath}\n音频保存至: {audioPath}", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"下载失败：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    button_Download.Enabled = true;
-                    button_Download.Text = "下载内容";
+                    await fileStream.WriteAsync(buffer, 0, bytesRead);
+                    totalBytesRead += bytesRead;
+                    int percentage = (int)((double)totalBytesRead / totalBytes.Value * 100);
+                    progress.Report(percentage);
                 }
             }
+        }
+
+        private async Task<(string content, string audioUrl)> GetArticleDetailsAsync(string articleUrl)
+        {
+            var web = new HtmlWeb();
+            var doc = await web.LoadFromWebAsync(articleUrl);
+            var contentNode = doc.DocumentNode.SelectSingleNode("//div[@class='content']");
+            string content = contentNode != null ? WebUtility.HtmlDecode(contentNode.InnerText.Trim()) : null;
+            string audioUrl = null;
+            var scriptNodes = doc.DocumentNode.SelectNodes("//script");
+            if (scriptNodes != null)
+            {
+                var mp3Regex = new Regex(@"mp3\s*:\s*""(https?://[^""]+\.mp3)""");
+                foreach (var script in scriptNodes)
+                {
+                    var match = mp3Regex.Match(script.InnerText);
+                    if (match.Success)
+                    {
+                        audioUrl = match.Groups[1].Value;
+                        break;
+                    }
+                }
+            }
+            return (content, audioUrl);
+        }
+
+        private void SetControlsEnabled(bool enabled)
+        {
+            comboBox_Category.Enabled = enabled;
+            numericUpDown_Page.Enabled = enabled;
+            button_Fetch.Enabled = enabled;
+            splitContainer1.Enabled = enabled;
+            button_Download.Enabled = enabled;
         }
 
         private static string MakeValidFileName(string name)
         {
             string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
-            string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
-            return Regex.Replace(name, invalidRegStr, "_");
+            return Regex.Replace(name, $"[{invalidChars}]+", "_");
         }
     }
 }

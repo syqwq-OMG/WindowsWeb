@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.12.1" />
+    <PackageReference Include="MetroFramework" Version="1.2.0.3" />
   </ItemGroup>
 
 </Project>

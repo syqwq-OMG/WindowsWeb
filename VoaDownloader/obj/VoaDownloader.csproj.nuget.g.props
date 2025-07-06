@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\Administrator\.nuget\packages\" />
     <SourceRoot Include="D:\Tools\Shared\NuGetPackages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMetroFramework_Design Condition=" '$(PkgMetroFramework_Design)' == '' ">C:\Users\Administrator\.nuget\packages\metroframework.design\1.2.0.3</PkgMetroFramework_Design>
+  </PropertyGroup>
 </Project>
