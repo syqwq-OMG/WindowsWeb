@@ -471,9 +471,10 @@ namespace SQL
 				dataSet = new DataSet();
 			}
 			///创建SqlDataAdapter
-			SqlDataAdapter da = CreateProcDataAdapter(cmdText,prams);
-			
-			try
+			//SqlDataAdapter da = CreateProcDataAdapter(cmdText,prams);
+            SqlDataAdapter da = CreateSQLDataAdapter(cmdText, prams);
+
+            try
 			{
 				///读取数据
 				da.Fill(dataSet);

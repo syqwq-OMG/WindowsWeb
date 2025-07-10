@@ -32,13 +32,14 @@
             btnHomework2 = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            btnSQL = new Button();
             tabPage2 = new TabPage();
             btnSegment = new Button();
             button1 = new Button();
             btnControls = new Button();
             btnCrawer = new Button();
             btnSearchFile = new Button();
-            btnSQL = new Button();
+            btnChangePassword = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnChangePassword);
             tabPage1.Controls.Add(btnSQL);
             tabPage1.Controls.Add(btnHomework2);
             tabPage1.Controls.Add(btnHomework1);
@@ -86,6 +88,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "作业区";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnSQL
+            // 
+            btnSQL.Location = new Point(27, 144);
+            btnSQL.Name = "btnSQL";
+            btnSQL.Size = new Size(135, 36);
+            btnSQL.TabIndex = 2;
+            btnSQL.Text = "SQL";
+            btnSQL.UseVisualStyleBackColor = true;
+            btnSQL.Click += btnSQL_Click;
             // 
             // tabPage2
             // 
@@ -151,15 +163,15 @@
             btnSearchFile.Text = "示例 搜索文件";
             btnSearchFile.UseVisualStyleBackColor = true;
             // 
-            // btnSQL
+            // btnChangePassword
             // 
-            btnSQL.Location = new Point(27, 144);
-            btnSQL.Name = "btnSQL";
-            btnSQL.Size = new Size(135, 36);
-            btnSQL.TabIndex = 2;
-            btnSQL.Text = "SQL";
-            btnSQL.UseVisualStyleBackColor = true;
-            btnSQL.Click += btnSQL_Click;
+            btnChangePassword.Location = new Point(239, 282);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(138, 51);
+            btnChangePassword.TabIndex = 3;
+            btnChangePassword.Text = "修改密码";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
             // 
             // frmMain
             // 
@@ -190,5 +202,6 @@
         private Button button1;
         private Button btnSegment;
         private Button btnSQL;
+        private Button btnChangePassword;
     }
 }

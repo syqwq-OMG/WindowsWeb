@@ -65,5 +65,20 @@ namespace myproject
             var frmSQL = new frmSQL();
             frmSQL.ShowDialog();
         }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            // Program.CurrentUserStudentNo 保存了登录时用户的学号
+            if (!string.IsNullOrEmpty(Program.CurrentUserStudentNo))
+            {
+                // 创建修改密码窗体实例，并将当前用户的学号传递过去
+                frmChangePassword changePasswordForm = new frmChangePassword(Program.CurrentUserStudentNo);
+                changePasswordForm.ShowDialog(); // 以对话框模式显示
+            }
+            else
+            {
+                MessageBox.Show("错误：无法获取当前用户信息，请重新登录。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
