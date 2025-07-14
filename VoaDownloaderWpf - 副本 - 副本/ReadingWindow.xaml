@@ -1,0 +1,335 @@
+﻿<Window x:Class="VoaDownloaderWpf.ReadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:VoaDownloaderWpf"  
+        mc:Ignorable="d"
+        Title="{Binding ArticleTitle}" Height="720" Width="850"
+        WindowStartupLocation="CenterScreen" MinWidth="600" MinHeight="500"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <local:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="#F5F7FA"/>
+            <Setter Property="BorderBrush" Value="#DCDFE6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#EAF4FC"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#007ACC"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#D4E9F9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PlayPauseButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="Background" Value="#0078D7"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse x:Name="backgroundEllipse" Fill="{TemplateBinding Background}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="backgroundEllipse" Property="Fill" Value="#005A9E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="backgroundEllipse" Property="Fill" Value="#003D6A"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsPlaying}" Value="False">
+                    <Setter Property="Content" Value="&#xE768;"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsPlaying}" Value="True">
+                    <Setter Property="Content" Value="&#xE769;"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="NavigationButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#E0E0E0"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MarkingToolButtonStyle" TargetType="RadioButton">
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="border" Background="Transparent" BorderBrush="#CCCCCC" BorderThickness="1" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#007ACC"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#007ACC"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#007ACC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="AudioSliderStyle" TargetType="Slider">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid VerticalAlignment="Center">
+                            <Border x:Name="TrackBackground" Height="4" Background="#E0E0E0" CornerRadius="2"/>
+                            <Border x:Name="PART_SelectionRange" Height="4" Background="{x:Null}" HorizontalAlignment="Left"/>
+                            <Track x:Name="PART_Track">
+                                <Track.Thumb>
+                                    <Thumb Width="16" Height="16" Background="#0078D7" BorderBrush="White" BorderThickness="2">
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Grid>
+                                                    <Ellipse Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}">
+                                        <RepeatButton.Template>
+                                            <ControlTemplate>
+                                                <Border x:Name="TrackDecrease" Height="4" Background="#0078D7" CornerRadius="2,0,0,2"/>
+                                            </ControlTemplate>
+                                        </RepeatButton.Template>
+                                    </RepeatButton>
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding WindowClosingCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="400"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" MinWidth="250"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,10">
+            <StackPanel>
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="&#xE76B;" Command="{Binding PreviousArticleCommand}" Style="{StaticResource NavigationButtonStyle}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding ArticleTitle}" FontSize="24" FontWeight="Bold" TextWrapping="Wrap" Foreground="#333333" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0"/>
+                    <Button Grid.Column="2" Content="&#xE76C;" Command="{Binding NextArticleCommand}" Style="{StaticResource NavigationButtonStyle}"/>
+                </Grid>
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Command="{Binding PlayPauseCommand}" Style="{StaticResource PlayPauseButtonStyle}" IsEnabled="{Binding Path=IsBusy, Converter={StaticResource InverseBooleanConverter}}"/>
+                    <Slider Grid.Column="1" Margin="15,0" Style="{StaticResource AudioSliderStyle}" Maximum="{Binding MaximumPosition}" Value="{Binding CurrentPosition, Mode=TwoWay}" IsEnabled="{Binding Path=IsBusy, Converter={StaticResource InverseBooleanConverter}}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding SliderDragStartedCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding SliderDragCompletedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=Value}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Slider>
+                    <TextBlock Grid.Column="2" Text="{Binding StatusText}" VerticalAlignment="Center" Foreground="Gray" FontStyle="Italic"/>
+                </Grid>
+            </StackPanel>
+            </Border>
+
+            <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="10" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="标记工具:" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0,15,0"/>
+                    <Button Content="高亮" ToolTip="荧光笔" Command="{Binding HighlightCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE7B5;"/>
+                    <Button Content="划线" ToolTip="下划线" Command="{Binding UnderlineCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE804;"/>
+                    <Button Content="橡皮" ToolTip="清除格式" Command="{Binding EraserCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE75C;"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="2" Background="White" CornerRadius="8">
+                <Border.Effect>
+                    <DropShadowEffect Color="#CCCCCC" BlurRadius="10" ShadowDepth="1" Opacity="0.5"/>
+                </Border.Effect>
+                <RichTextBox x:Name="ArticleRichTextBox" Margin="5" Padding="15"
+                     FontSize="18" FontFamily="Georgia" BorderThickness="0"
+                     VerticalScrollBarVisibility="Auto"
+                     IsReadOnly="True" SelectionChanged="ArticleRichTextBox_SelectionChanged">
+                    <FlowDocument/>
+                </RichTextBox>
+            </Border>
+        </Grid>
+        
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="Transparent"/>
+
+        <Grid Grid.Column="2" Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" MinHeight="200"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8">
+                <DockPanel>
+                    <TextBlock Text="单词释义" DockPanel.Dock="Top" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="15,15,15,5"/>
+                    <Separator DockPanel.Dock="Top"/>
+                    <ScrollViewer Margin="15,0,15,15" VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SelectedWord}" FontWeight="Bold" FontSize="22" Foreground="{StaticResource PrimaryBrush}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding SelectedWordDefinition}" TextWrapping="Wrap" LineHeight="24" FontSize="16" Margin="0,10,0,0"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <Button Content="加入生词本" ToolTip="将当前单词加入生词本" Command="{Binding AddToVocabCommand}" IsEnabled="{Binding CanAddToVocab}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xECC8;" HorizontalAlignment="Left"/>
+                                <Button Content="查看生词本" ToolTip="打开生词本窗口" Command="{Binding ViewVocabBookCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE8A4;" Margin="10,0,0,0"/>
+
+                              </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="Transparent" ResizeDirection="Rows"/>
+
+            <Border Grid.Row="2" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" Margin="0,10,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="与AI助教对话" Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="15,10,15,5"/>
+                    <Separator Grid.Row="0" VerticalAlignment="Bottom"/>
+
+                    <ScrollViewer Grid.Row="1" x:Name="ChatScrollViewer" VerticalScrollBarVisibility="Auto" Margin="10">
+                        <ItemsControl ItemsSource="{Binding ChatHistory}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{Binding IsUserMessage, Converter={StaticResource ChatBubbleStyleConverter}}">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Foreground="{Binding IsUserMessage, Converter={StaticResource ChatForegroundConverter}}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <ProgressBar Grid.Row="1" IsIndeterminate="True" Height="5" VerticalAlignment="Top" Visibility="{Binding IsAiThinking, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                    <Grid Grid.Row="2" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="UserInputTextBox" 
+                             Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}" 
+                             IsEnabled="{Binding IsAiThinking, Converter={StaticResource InverseBooleanConverter}}"
+                             FontSize="14"
+                             Padding="8,5"
+                             BorderBrush="#CCCCCC"
+                             VerticalContentAlignment="Center"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             MinHeight="35"
+                             MaxHeight="100"
+                             VerticalScrollBarVisibility="Auto"/>
+                        <Button Grid.Column="1" 
+        Command="{Binding SendMessageCommand}" 
+        Style="{StaticResource SendButtonStyle}" 
+        ToolTip="发送消息"
+        Margin="10,0,0,0" 
+        VerticalAlignment="Bottom"/></Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

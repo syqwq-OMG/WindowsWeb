@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你好，世界 | [syqwq]</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset and Basic Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #0a0a0a; /* 深邃的黑色背景 */
+            color: #e0e0e0; /* 柔和的白色文字 */
+            overflow-x: hidden; /* 防止水平滚动 */
+        }
+
+        /* 3D 背景画布 */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1; /* 将它置于内容之后 */
+        }
+
+        /* 内容容器 */
+        .content-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* 内容区域通用样式 */
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* 每个区域至少占满一屏 */
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* 英雄/主屏区域 */
+        .hero-section h1 {
+            font-size: clamp(3rem, 10vw, 7rem); /* 响应式字体大小 */
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: -2px;
+            background: linear-gradient(90deg, #b3ffab, #12fff7); /* 渐变色文字 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero-section p {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-weight: 300;
+            text-align: center;
+            margin-top: 20px;
+            color: #a0a0a0;
+        }
+
+        /* 滚动提示 */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        
+        /* 标题通用样式 */
+        .section-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #b3ffab, #12fff7);
+        }
+
+        /* 项目网格 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            width: 100%;
+        }
+
+        /* 项目卡片 */
+        .project-card {
+            background: rgba(255, 255, 255, 0.03); /* 半透明玻璃效果 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px); /* 毛玻璃背景 */
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .project-card .tags {
+            margin-top: 20px;
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* 为JS动画准备的初始隐藏状态 */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="content-container">
+
+        <section class="section hero-section">
+            <div class="reveal-element">
+                <h1>你好, 我是[syqwq]</h1>
+                <p>一个基本上啥也不会但是喜欢睡觉的咸鱼开发者</p>
+            </div>
+            <div class="scroll-down reveal-element">向下滚动</div>
+        </section>
+
+        <section class="section projects-section">
+            <h2 class="section-title reveal-element">我的精选项目</h2>
+            <div class="projects-grid">
+                <div class="project-card reveal-element">
+                    <h3>项目 A: 智能数据可视化平台</h3>
+                    <p>一个使用 D3.js 和 React 构建的交互式数据分析工具，能够将复杂数据转化为直观的图表。</p>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">D3.js</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="project-card reveal-element">
+                    <h3>项目 B: 实时协作白板</h3>
+                    <p>基于 WebSocket 和 Canvas API，允许多人同时在线绘图和交流的网页应用。</p>
+                    <div class="tags">
+                        <span class="tag">WebSocket</span>
+                        <span class="tag">Canvas</span>
+                        <span class="tag">Vue.js</span>
+                    </div>
+                </div>
+                <div class="project-card reveal-element">
+                    <h3>项目 C: AI 驱动的写作助手</h3>
+                    <p>利用自然语言处理模型，为用户提供语法校正、风格优化和内容建议的 Chrome 扩展程序。</p>
+                    <div class="tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                </div>
+                <div class="project-card reveal-element">
+                    <h3>项目 D: VoaDownloader</h3>
+                    <p>利用爬虫结合AI技术，利于广大英语学习者更快更好增进泛听和阅读能力</p>
+                    <div class="tags">
+                        <span class="tag">C#</span>
+                        <span class="tag">WPF</span>
+                        <span class="tag">English</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-section">
+            <h2 class="section-title reveal-element">与我联系</h2>
+            <p class="reveal-element" style="text-align: center; font-size: 1.2rem; max-width: 600px;">
+                我对新的机遇总是充满热情。如果您对我的工作感兴趣，或者有任何想法想要交流，请通过以下方式联系我。
+            </p>
+            <h3 class="reveal-element" style="font-size: 2rem; margin-top: 40px; color: #12fff7;">3422403944@qq.com
+            </h3>
+        </section>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script type="module">
+        // ======================================================
+        // Part 1: Three.js 动态粒子背景
+        // ======================================================
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // 创建粒子
+        const particleCount = 5000;
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount * 3; i++) {
+            positions[i] = (Math.random() - 0.5) * 10;
+        }
+        const particlesGeometry = new THREE.BufferGeometry();
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            color: 0x555555,
+            size: 0.015,
+            blending: THREE.AdditiveBlending,
+        });
+
+        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particles);
+
+        camera.position.z = 5;
+
+        // 鼠标交互
+        const mouse = new THREE.Vector2();
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // 动画循环
+        const clock = new THREE.Clock();
+        const tick = () => {
+            const elapsedTime = clock.getElapsedTime();
+
+            // 更新粒子动画
+            particles.rotation.y = elapsedTime * 0.05;
+            particles.rotation.x = elapsedTime * 0.02;
+
+            // 让相机轻微跟随鼠标
+            camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.02;
+            camera.position.y += (-mouse.y * 0.5 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(tick);
+        };
+        tick();
+
+        // 窗口大小调整
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        });
+
+        // ======================================================
+        // Part 2: GSAP 滚动触发动画
+        // ======================================================
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 获取所有需要动画的元素
+        const revealElements = gsap.utils.toArray('.reveal-element');
+
+        revealElements.forEach((el, index) => {
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 90%', // 当元素顶部进入视口90%时开始动画
+                    end: 'bottom 10%',
+                    toggleActions: 'play none none none', // 只播放一次
+                    // markers: true, // 调试时可以打开，查看触发位置
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>
