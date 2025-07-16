@@ -113,12 +113,27 @@ namespace VoaDownloaderWpf
         }
 
 
+        // VoaScraperService.cs
+
         public async Task<(string content, string audioUrl)> GetArticleDetailsAsync(string articleUrl)
         {
             var web = new HtmlWeb();
             var doc = await web.LoadFromWebAsync(articleUrl);
             var contentNode = doc.DocumentNode.SelectSingleNode("//div[@class='content']");
             string content = contentNode != null ? WebUtility.HtmlDecode(contentNode.InnerText.Trim()) : null;
+
+            // =============================================================
+            // ====         【核心修正】清理多余的连续空行              ====
+            // =============================================================
+            if (!string.IsNullOrEmpty(content))
+            {
+                // 这个正则表达式会匹配3个或更多连续的换行符(包括\r\n, \n, \r)
+                // 并将其统一替换为两个标准的Windows换行符(\r\n\r\n)。
+                // 这确保了段落之间最多只有一个空行。
+                content = Regex.Replace(content, @"(\r\n|\n|\r){3,}", "\r\n\r\n");
+            }
+
+            // ... (方法后面的部分保持不变) ...
             string audioUrl = null;
             var scriptNodes = doc.DocumentNode.SelectNodes("//script");
             if (scriptNodes != null)

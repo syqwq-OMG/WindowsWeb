@@ -10,6 +10,11 @@
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource BackgroundBrush}">
 
+    <Window.Resources>
+        <!--local:LearnedStatusConverter x:Key="LearnedStatusConverter"/-->
+        <!--local:InverseBooleanConverter x:Key="InverseBooleanConverter"/-->
+    </Window.Resources>
+
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -17,20 +22,27 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="White" CornerRadius="4" Padding="10" Margin="0,0,0,10">
-            <CheckBox Content="显示已学会的单词" IsChecked="{Binding ShowLearned}" VerticalAlignment="Center"/>
+        <Border Grid.Row="0" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+            <CheckBox Content="显示已学会的单词" 
+                      IsChecked="{Binding ShowLearned}" 
+                      VerticalAlignment="Center"
+                      Style="{StaticResource {x:Type CheckBox}}"/>
         </Border>
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding VocabEntries}"
                   Style="{StaticResource ModernDataGridStyle}"
+                  ColumnHeaderStyle="{StaticResource ModernDataGridColumnHeaderStyle}"
+                  RowStyle="{StaticResource ModernDataGridRowStyle}"
+                  CellStyle="{StaticResource ModernDataGridCellStyle}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   HeadersVisibility="Column"
                   SelectionMode="Extended">
+
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.Header>
-                        <CheckBox IsChecked="{Binding DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <CheckBox IsChecked="{Binding IsAllSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -45,24 +57,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="状态" Width="Auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="✓ 已学会" Foreground="Green" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.8">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsLearned}" Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="状态" Binding="{Binding IsLearned, Converter={StaticResource LearnedStatusConverter}}" Width="Auto" FontWeight="Bold" Foreground="Green"/>
 
                 <DataGridTextColumn Header="单词" Binding="{Binding Word}" Width="*"/>
                 <DataGridTextColumn Header="释义" Binding="{Binding Definition}" Width="3*"/>
@@ -74,14 +69,13 @@
         <Border Grid.Row="2" Background="{StaticResource ContentBackgroundBrush}" Padding="10" Margin="0,10,0,0"
                 BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
             <StackPanel Orientation="Horizontal">
-                <Button Content="标记为“已学会”" Command="{Binding MarkSelectedAsLearnedCommand}" Style="{StaticResource PrimaryButtonStyle}"
+                <Button Content="标记为“已学会”" Command="{Binding MarkSelectedAsLearnedCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE930;"
                         Visibility="{Binding ShowLearned, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
 
-                <Button Content="标记为“未学会”" Command="{Binding MarkSelectedAsForgottenCommand}" Style="{StaticResource PrimaryButtonStyle}"
+                <Button Content="标记为“未学会”" Command="{Binding MarkSelectedAsForgottenCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE7A7;"
                         Visibility="{Binding ShowLearned, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                <Button Content="彻底删除" Command="{Binding DeleteSelectedCommand}" Style="{StaticResource ActionButtonStyle}" 
-                        Background="Crimson" Foreground="White" Margin="20,0,0,0"/>
+                <Button Content="彻底删除" Command="{Binding DeleteSelectedCommand}" Style="{StaticResource DangerIconFunctionButtonStyle}" Tag="&#xE74D;" Margin="20,0,0,0"/>
             </StackPanel>
         </Border>
     </Grid>

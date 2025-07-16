@@ -3,104 +3,36 @@
   "WorkspaceRootPath": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\geminiaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:geminiaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\styles\\sharedresources.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:styles\\sharedresources.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\readingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:readingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\voadownloaderwpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:voadownloaderwpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\readingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:readingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\vocabbookwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:vocabbookwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\converters\\valueconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:converters\\valueconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\ireadingview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:ireadingview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\readingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:readingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\vocabentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:vocabentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\geminiaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:geminiaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\readingwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:readingwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\markdownimportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:markdownimportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\vocabbookwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:vocabbookwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\readingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:readingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\vocabbookviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:vocabbookviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\vocabbookwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:vocabbookwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\vocabdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:vocabdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\dictionaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:dictionaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\voascraperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:voascraperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\articleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:articleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|d:\\workspace\\windowsweb\\voadownloaderwpf - \u526F\u672C - \u526F\u672C\\styles\\sharedresources.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{90D6564F-3747-49D8-89FF-40CE5CE06005}|VoaDownloaderWpf.csproj|solutionrelative:styles\\sharedresources.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -110,326 +42,107 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "VocabEntry.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabEntry.cs",
-              "RelativeDocumentMoniker": "VocabEntry.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabEntry.cs",
-              "RelativeToolTip": "VocabEntry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T10:24:26.976Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-11T06:17:44.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ReadingWindow.xaml",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingWindow.xaml",
-              "RelativeDocumentMoniker": "ReadingWindow.xaml",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingWindow.xaml",
-              "RelativeToolTip": "ReadingWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T05:18:14.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ReadingViewModel.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingViewModel.cs",
-              "RelativeDocumentMoniker": "ReadingViewModel.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingViewModel.cs",
-              "RelativeToolTip": "ReadingViewModel.cs",
-              "ViewState": "AgIAAP4AAAAAAAAAAIBCwIEAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T09:01:05.892Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "VoaDownloaderWpf",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VoaDownloaderWpf.csproj",
-              "RelativeDocumentMoniker": "VoaDownloaderWpf.csproj",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VoaDownloaderWpf.csproj",
-              "RelativeToolTip": "VoaDownloaderWpf.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwMAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-14T09:16:21.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainWindow.xaml.cs",
-              "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T12:01:00.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "MainViewModel.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainViewModel.cs",
-              "RelativeToolTip": "MainViewModel.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAswNIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T06:21:39.012Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GeminiAiService.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\GeminiAiService.cs",
-              "RelativeDocumentMoniker": "GeminiAiService.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\GeminiAiService.cs",
-              "RelativeToolTip": "GeminiAiService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA8wBMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T13:05:46.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SharedResources.xaml",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\Styles\\SharedResources.xaml",
-              "RelativeDocumentMoniker": "Styles\\SharedResources.xaml",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\Styles\\SharedResources.xaml",
-              "RelativeToolTip": "Styles\\SharedResources.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T10:37:26.783Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "ValueConverters.cs",
               "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\Converters\\ValueConverters.cs",
               "RelativeDocumentMoniker": "Converters\\ValueConverters.cs",
               "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\Converters\\ValueConverters.cs",
               "RelativeToolTip": "Converters\\ValueConverters.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T12:39:19.014Z",
+              "WhenOpened": "2025-07-16T16:25:23.011Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IReadingView.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\IReadingView.cs",
-              "RelativeDocumentMoniker": "IReadingView.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\IReadingView.cs",
-              "RelativeToolTip": "IReadingView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T09:17:19.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ChatMessage.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ChatMessage.cs",
-              "RelativeDocumentMoniker": "ChatMessage.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ChatMessage.cs",
-              "RelativeToolTip": "ChatMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T13:08:01.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ReadingWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingWindow.xaml.cs",
-              "RelativeDocumentMoniker": "ReadingWindow.xaml.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingWindow.xaml.cs",
-              "RelativeToolTip": "ReadingWindow.xaml.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAiwGkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T08:42:39.439Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 0,
               "Title": "VocabBookWindow.xaml",
               "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabBookWindow.xaml",
               "RelativeDocumentMoniker": "VocabBookWindow.xaml",
               "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabBookWindow.xaml",
               "RelativeToolTip": "VocabBookWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T12:00:24.589Z",
+              "WhenOpened": "2025-07-16T16:20:31.4Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "VocabBookViewModel.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabBookViewModel.cs",
-              "RelativeDocumentMoniker": "VocabBookViewModel.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabBookViewModel.cs",
-              "RelativeToolTip": "VocabBookViewModel.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAiwJYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T11:57:50.904Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-14T09:30:07.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\App.xaml",
-              "RelativeToolTip": "App.xaml",
+              "DocumentIndex": 6,
+              "Title": "ReadingWindow.xaml",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingWindow.xaml",
+              "RelativeDocumentMoniker": "ReadingWindow.xaml",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingWindow.xaml",
+              "RelativeToolTip": "ReadingWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-14T09:25:26.294Z",
+              "WhenOpened": "2025-07-16T16:02:07.807Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "VocabBookWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabBookWindow.xaml.cs",
-              "RelativeDocumentMoniker": "VocabBookWindow.xaml.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabBookWindow.xaml.cs",
-              "RelativeToolTip": "VocabBookWindow.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAywBcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T10:35:23.647Z",
+              "DocumentIndex": 7,
+              "Title": "SharedResources.xaml",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\Styles\\SharedResources.xaml",
+              "RelativeDocumentMoniker": "Styles\\SharedResources.xaml",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\Styles\\SharedResources.xaml",
+              "RelativeToolTip": "Styles\\SharedResources.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-16T16:21:48.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "MainViewModel.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MainViewModel.cs",
+              "RelativeToolTip": "MainViewModel.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAA4wI0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T09:31:57.479Z",
+              "WhenOpened": "2025-07-16T16:08:17.399Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "VocabDataService.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabDataService.cs",
-              "RelativeDocumentMoniker": "VocabDataService.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VocabDataService.cs",
-              "RelativeToolTip": "VocabDataService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAFsAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "MarkdownImportService.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MarkdownImportService.cs",
+              "RelativeDocumentMoniker": "MarkdownImportService.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\MarkdownImportService.cs",
+              "RelativeToolTip": "MarkdownImportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T12:25:00.499Z",
+              "WhenOpened": "2025-07-16T16:16:29.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "DictionaryService.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\DictionaryService.cs",
-              "RelativeDocumentMoniker": "DictionaryService.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\DictionaryService.cs",
-              "RelativeToolTip": "DictionaryService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwDAAAAANAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "GeminiAiService.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\GeminiAiService.cs",
+              "RelativeDocumentMoniker": "GeminiAiService.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\GeminiAiService.cs",
+              "RelativeToolTip": "GeminiAiService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAswB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T09:37:02.302Z",
+              "WhenOpened": "2025-07-16T15:54:08.712Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "VoaScraperService.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VoaScraperService.cs",
-              "RelativeDocumentMoniker": "VoaScraperService.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\VoaScraperService.cs",
-              "RelativeToolTip": "VoaScraperService.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAxwGYAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ReadingViewModel.cs",
+              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingViewModel.cs",
+              "RelativeDocumentMoniker": "ReadingViewModel.cs",
+              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ReadingViewModel.cs",
+              "RelativeToolTip": "ReadingViewModel.cs",
+              "ViewState": "AgIAAHQBAAAAAAAAAABAwJIBAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T06:19:33.896Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "BaseViewModel.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\BaseViewModel.cs",
-              "RelativeDocumentMoniker": "BaseViewModel.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\BaseViewModel.cs",
-              "RelativeToolTip": "BaseViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T06:21:12.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ArticleViewModel.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ArticleViewModel.cs",
-              "RelativeDocumentMoniker": "ArticleViewModel.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\ArticleViewModel.cs",
-              "RelativeToolTip": "ArticleViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T06:26:29.738Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "AssemblyInfo.cs",
-              "ToolTip": "D:\\Workspace\\WindowsWeb\\VoaDownloaderWpf - \u526F\u672C - \u526F\u672C\\AssemblyInfo.cs",
-              "RelativeToolTip": "AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-11T06:29:05.479Z",
+              "WhenOpened": "2025-07-14T09:01:05.892Z",
               "EditorCaption": ""
             }
           ]

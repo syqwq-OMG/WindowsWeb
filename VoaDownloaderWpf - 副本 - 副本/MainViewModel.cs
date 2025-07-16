@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace VoaDownloaderWpf
@@ -65,6 +66,8 @@ namespace VoaDownloaderWpf
         public ICommand OpenReaderCommand { get; } // 新增：打开阅读器命令
         // 【新增】打开生词本的命令
         public ICommand OpenVocabBookCommand { get; }
+        // 【新增】打开笔记的命令
+        public ICommand OpenNoteCommand { get; }
 
         public MainViewModel()
         {
@@ -80,12 +83,75 @@ namespace VoaDownloaderWpf
             OpenReaderCommand = new RelayCommand(async _ => await OpenReaderWindowAsync(), _ => Articles.Any(a => a.IsSelected));
             // 【新增】初始化新命令
             OpenVocabBookCommand = new RelayCommand(_ => OpenVocabBookWindow());
+            // 【新增】初始化新命令
+            OpenNoteCommand = new RelayCommand(_ => OpenNote());
 
             // ------------------------------------
 
             // ########## 优化 1：改进 ViewModel 的异步加载方式 ##########
             // 在构造函数中调用一个 async void 方法
             LoadInitialDataAsync();
+        }
+
+        // 【新增】打开本地笔记的完整逻辑
+        private void OpenNote()
+        {
+            var dialog = new OpenFolderDialog
+            {
+                Title = "请选择包含笔记文件的文件夹"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                string folderPath = dialog.FolderName;
+                try
+                {
+                    // 1. 查找文件
+                    var txtFiles = Directory.GetFiles(folderPath, "*.txt");
+                    var audioFiles = Directory.GetFiles(folderPath, "*.mp3"); // 或其他音频格式
+
+                    if (txtFiles.Length == 0 || audioFiles.Length == 0)
+                    {
+                        MessageBox.Show("错误：所选文件夹中必须至少包含一个 .txt 文件和一个音频文件。", "文件不完整", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    // (为简化，我们只处理第一个找到的文件对)
+                    string textFilePath = txtFiles[0];
+                    string audioFilePath = audioFiles[0];
+                    string baseName = Path.GetFileNameWithoutExtension(textFilePath);
+
+                    // 检查音频文件名是否匹配
+                    if (!Path.GetFileNameWithoutExtension(audioFilePath).Equals(baseName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("错误：找到的 .txt 文件和音频文件的文件名不匹配。", "文件名不匹配", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    string title = baseName;
+                    string textContent = File.ReadAllText(textFilePath);
+
+                    // 2. 检查并加载Markdown文件
+                    FlowDocument document = null;
+                    string mdFilePath = Path.Combine(folderPath, $"{baseName}.md");
+                    if (File.Exists(mdFilePath))
+                    {
+                        string markdownContent = File.ReadAllText(mdFilePath);
+                        // 【核心修正】调用新方法签名，将标题title传递进去
+                        document = MarkdownImportService.ConvertToFlowDocument(markdownContent, title);
+                    }
+
+                    // 3. 创建并显示窗口
+                    // 【核心修正】调用新的构造函数，并传入文件夹路径
+                    var readingViewModel = new ReadingViewModel(title, textContent, audioFilePath, folderPath, document);
+                    var readingWindow = new ReadingWindow { DataContext = readingViewModel };
+                    readingWindow.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"打开笔记时出错: {ex.Message}", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         // 优化 1：创建一个 async void 的加载方法

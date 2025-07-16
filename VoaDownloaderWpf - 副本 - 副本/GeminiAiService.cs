@@ -23,17 +23,25 @@ namespace VoaDownloaderWpf
         /// <param name="context">从文章中选中的文本</param>
         public void StartChatSession(string context)
         {
-            // 2. 使用StartChat()开启一个可以保持上下文的聊天会话
+            // 使用StartChat()开启一个可以保持上下文的聊天会话
             _chatSession = _model.StartChat();
 
-            // 3. （可选但推荐）如果存在上下文，先将其作为背景信息发送给AI
+            // =============================================================
+            // ====          【核心修正】修改这里的系统提示词             ====
+            // =============================================================
+
+            // 1. 定义中文的系统提示词，明确要求AI的角色和回答语言
+            string systemInstruction = "你是一个乐于助人的英语学习助手。请务必始终使用【中文】来回答我的所有问题。";
+
+            // 2. 如果用户选择了上下文，将上下文信息附加到提示词中
             if (!string.IsNullOrWhiteSpace(context))
             {
-                string initialPrompt = $"Please act as a helpful English learning assistant for a Chinese student. The user is currently reading an article. Here is a piece of text from the article that they have selected as context: \"{context}\". Now, please answer the user's following questions based on this context in Chinese. 接下来的所有内容请用中文回答。";
-
-                // 发送初始上下文，但不等待回复，让其成为对话背景
-                _ = _chatSession.GenerateContentAsync(initialPrompt);
+                systemInstruction += $" 用户当前正在阅读一篇文章，这是他们选中的上下文内容，请你参考： \"{context}\"";
             }
+
+            // 3. 将这个包含角色设定的完整提示词，作为对话的开场白发送给AI
+            // 我们不需要等待它的回复，这更像是一个“背景设定”
+            _ = _chatSession.GenerateContentAsync(systemInstruction);
         }
 
         /// <summary>

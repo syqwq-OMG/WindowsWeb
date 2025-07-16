@@ -49,12 +49,17 @@ namespace VoaDownloaderWpf
 
         private void LoadArticleContentIntoRichTextBox()
         {
-            if (_viewModel?.ArticleContent != null)
+            // 【核心修正】
+            // 优先使用预加载的文档(来自.md文件)
+            if (_viewModel?.PreloadedDocument != null)
             {
-                ArticleRichTextBox.IsEnabled = false;
+                ArticleRichTextBox.Document = _viewModel.PreloadedDocument;
+            }
+            // 否则，像以前一样从纯文本加载
+            else if (_viewModel?.ArticleContent != null)
+            {
                 ArticleRichTextBox.Document.Blocks.Clear();
                 ArticleRichTextBox.Document.Blocks.Add(new Paragraph(new Run(_viewModel.ArticleContent)));
-                ArticleRichTextBox.IsEnabled = true;
             }
         }
 
@@ -103,6 +108,12 @@ namespace VoaDownloaderWpf
         public string GetSelectedText()
         {
             return ArticleRichTextBox.Selection.Text;
+        }
+
+        // 【新增】实现接口中的新方法
+        public FlowDocument GetDocument()
+        {
+            return ArticleRichTextBox.Document;
         }
     }
 }

@@ -6,12 +6,12 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:VoaDownloaderWpf"  
         mc:Ignorable="d"
-        Title="{Binding ArticleTitle}" Height="720" Width="850"
+        Title="{Binding ArticleTitle}" Height="760" Width="1214"
         WindowStartupLocation="CenterScreen" MinWidth="600" MinHeight="500"
         Background="#F5F5F5">
 
     <Window.Resources>
-        <local:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <!--local:InverseBooleanConverter x:Key="InverseBooleanConverter"-->
         <Style x:Key="ActionButtonStyle" TargetType="Button">
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Margin" Value="0,0,10,0"/>
@@ -183,7 +183,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" MinWidth="400"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" MinWidth="250"/>
+            <ColumnDefinition Width="330" MinWidth="250"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -193,38 +193,59 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,10">
-            <StackPanel>
-                <Grid Margin="0,0,0,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="&#xE76B;" Command="{Binding PreviousArticleCommand}" Style="{StaticResource NavigationButtonStyle}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding ArticleTitle}" FontSize="24" FontWeight="Bold" TextWrapping="Wrap" Foreground="#333333" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0"/>
-                    <Button Grid.Column="2" Content="&#xE76C;" Command="{Binding NextArticleCommand}" Style="{StaticResource NavigationButtonStyle}"/>
-                </Grid>
-                <Grid VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Command="{Binding PlayPauseCommand}" Style="{StaticResource PlayPauseButtonStyle}" IsEnabled="{Binding Path=IsBusy, Converter={StaticResource InverseBooleanConverter}}"/>
-                    <Slider Grid.Column="1" Margin="15,0" Style="{StaticResource AudioSliderStyle}" Maximum="{Binding MaximumPosition}" Value="{Binding CurrentPosition, Mode=TwoWay}" IsEnabled="{Binding Path=IsBusy, Converter={StaticResource InverseBooleanConverter}}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding SliderDragStartedCommand}"/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
-                                <i:InvokeCommandAction Command="{Binding SliderDragCompletedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=Value}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Slider>
-                    <TextBlock Grid.Column="2" Text="{Binding StatusText}" VerticalAlignment="Center" Foreground="Gray" FontStyle="Italic"/>
-                </Grid>
-            </StackPanel>
+            <Border Grid.Row="0" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" Padding="20" Margin="0,0,0,10">
+                <StackPanel>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="&#xE76B;" Command="{Binding PreviousArticleCommand}" Style="{StaticResource NavigationButtonStyle}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding ArticleTitle}" FontSize="24" FontWeight="Bold" TextWrapping="Wrap" Foreground="{StaticResource TextPrimaryBrush}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0"/>
+                        <Button Grid.Column="2" Content="&#xE76C;" Command="{Binding NextArticleCommand}" Style="{StaticResource NavigationButtonStyle}"/>
+                    </Grid>
+
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Command="{Binding PlayPauseCommand}" Style="{StaticResource PlayPauseButtonStyle}" IsEnabled="{Binding Path=IsBusy, Converter={StaticResource InverseBooleanConverter}}"/>
+
+                        <ItemsControl Grid.Column="1" ItemsSource="{Binding AvailableSpeedRatios}" Margin="15,0">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Content="{Binding DisplayName}" GroupName="SpeedRatioGroup"
+                                     Command="{Binding DataContext.SetSpeedCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                     CommandParameter="{Binding Value}"
+                                     Style="{StaticResource TabRadioButtonStyle}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <Slider Grid.Column="2" Margin="15,0" Style="{StaticResource AudioSliderStyle}" Maximum="{Binding MaximumPosition}" Value="{Binding CurrentPosition, Mode=TwoWay}" IsEnabled="{Binding Path=IsBusy, Converter={StaticResource InverseBooleanConverter}}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding SliderDragStartedCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                                    <i:InvokeCommandAction Command="{Binding SliderDragCompletedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Slider}, Path=Value}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Slider>
+
+                        <TextBlock Grid.Column="3" Text="{Binding StatusText}" VerticalAlignment="Center" Foreground="{StaticResource TextRegularBrush}" FontStyle="Italic"/>
+                    </Grid>
+                </StackPanel>
             </Border>
 
             <Border Grid.Row="1" Background="White" CornerRadius="8" Padding="10" Margin="0,0,0,10">
@@ -233,6 +254,12 @@
                     <Button Content="高亮" ToolTip="荧光笔" Command="{Binding HighlightCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE7B5;"/>
                     <Button Content="划线" ToolTip="下划线" Command="{Binding UnderlineCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE804;"/>
                     <Button Content="橡皮" ToolTip="清除格式" Command="{Binding EraserCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE75C;"/>
+                    <Separator Margin="10,0"/>
+                    <Button Content="保存笔记" 
+                        ToolTip="保存在线文章或更新本地笔记" 
+                        Command="{Binding SaveOrUpdateNotesCommand}" 
+                        Style="{StaticResource IconFunctionButtonStyle}" 
+                        Tag="&#xE74E;"/>
                 </StackPanel>
             </Border>
 
