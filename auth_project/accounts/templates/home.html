@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}首页{% endblock %}
+
+{% block content %}
+  <div class="text-center">
+    <h1>欢迎来到我的网站！</h1>
+
+    {% if user.is_authenticated %}
+      <p class="lead">你好, {{ user.username }}! (登录邮箱: {{ user.email }})</p>
+      <a href="{% url 'logout' %}" class="btn btn-danger">登出</a>
+    {% else %}
+      <p class="lead">你当前未登录。</p>
+      <a href="{% url 'login' %}" class="btn btn-primary">去登录</a>
+      <a href="{% url 'signup' %}" class="btn btn-secondary">去注册</a>
+    {% endif %}
+  </div>
+{% endblock %}

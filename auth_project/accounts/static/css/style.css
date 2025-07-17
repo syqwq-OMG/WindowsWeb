@@ -1,0 +1,184 @@
+/* accounts/static/css/style.css (全新内容) */
+
+/* 1. 全局与基础设定 */
+:root {
+    --background-color: #121212; /* 主背景色 - 深邃黑 */
+    --surface-color: #1e1e1e;   /* 表面/卡片背景色 - 深灰 */
+    --primary-accent: #007bff;     /* 主强调色 - 亮蓝色 */
+    --primary-accent-hover: #0056b3;/* 强调色悬浮状态 */
+    --text-primary: #e0e0e0;       /* 主要文字颜色 - 浅灰，非纯白，更护眼 */
+    --text-secondary: #a0a0a0;    /* 次要文字颜色 - 中灰 */
+    --border-color: rgba(255, 255, 255, 0.1); /* 边框颜色 */
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 2. 卡片与表单样式 (登录/注册页) */
+.card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px; /* 更大的圆角 */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+}
+
+.card-header, .card-footer {
+    background-color: transparent;
+    border-color: var(--border-color);
+}
+.card h2, .card-title {
+    color: var(--text-primary);
+}
+
+.form-control {
+    background-color: #2c2c2c;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    padding: 12px;
+}
+.form-control:focus {
+    background-color: #2c2c2c;
+    color: var(--text-primary);
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* 使用强调色作为焦点光晕 */
+}
+
+label, .form-text {
+    color: var(--text-secondary);
+}
+
+.btn-primary {
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent);
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: var(--primary-accent-hover);
+    border-color: var(--primary-accent-hover);
+    transform: translateY(-2px); /* 轻微上浮效果 */
+}
+
+/* 3. 仪表盘样式 (登录后) */
+
+/* 侧边栏 */
+#sidebar {
+    background-color: var(--surface-color) !important; /* 使用 !important 覆盖 Bootstrap 的 bg-dark */
+    border-right: 1px solid var(--border-color);
+}
+#sidebar .nav-link {
+    color: var(--text-secondary);
+    border-radius: 6px;
+    margin: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+#sidebar .nav-link i { /* 图标样式 */
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+}
+#sidebar .nav-link:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+#sidebar .nav-link.active {
+    color: white;
+    background-color: var(--primary-accent);
+}
+
+/* 主内容区域 */
+main .border-bottom {
+    border-color: var(--border-color) !important;
+}
+
+main h1, main h2 {
+    color: var(--text-primary);
+}
+
+.list-group-item {
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+.list-group-item-action:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+/* 为了适应新的深色主题，移除一些可能冲突的内联样式 */
+.input-group-text,
+.text-white-50 {
+    background-color: transparent !important;
+    color: var(--text-secondary) !important;
+}
+
+/* 修正粒子背景层级 */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 这是关键！将粒子画布压到最底层 */
+}
+
+.helptext {
+    display: block; /* 确保它能独立成行 */
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: var(--text-secondary) !important; /* 使用我们在 :root 中定义的次要文字颜色 */
+}
+
+.helptext ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* * 【本次修正的关键】
+ * 根据您提供的 HTML 结构，我们直接定位到 .form-text.text-muted 下的列表项。
+ */
+.form-text.text-muted ul {
+    list-style-type: none; /* 移除列表的小圆点 */
+    padding-left: 0;       /* 移除左边的内边距 */
+    margin-bottom: 0;      /* 移除底部的外边距 */
+}
+
+.form-text.text-muted {
+    color: var(--text-secondary) !important; /* 使用浅灰色，并用 !important 确保最高优先级 */
+    font-weight: normal; /* 如果之前设置了 bold，这里可以恢复正常 */
+}
+
+.form-text.text-muted ul li {
+    color: var(--text-secondary) !important; /* 使用浅灰色，并用 !important 确保最高优先级 */
+    font-weight: normal; /* 如果之前设置了 bold，这里可以恢复正常 */
+}
+
+/*
+ * 修正 Django 默认的错误列表（errorlist）样式。
+ * 这是当表单验证失败时显示错误信息的容器。
+ */
+.errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    color: #f85149; /* 使用一个更明亮的红色，在暗色背景下更显眼 */
+    font-weight: bold;
+}
+
+
+/*
+ * 修正我们在模板中使用的 Bootstrap 警告框的文字颜色。
+ * 我们之前用它来显示字段错误，但默认的文字颜色在暗色背景下看不清。
+ */
+.alert.alert-danger {
+    color: #f8d7da; /* 将文字颜色设置为浅红色 */
+    background-color: rgba(220, 53, 69, 0.25); /* 背景使用带透明度的深红色 */
+    border-color: rgba(220, 53, 69, 0.5);
+}

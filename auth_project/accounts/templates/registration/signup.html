@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}注册新用户{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-center">注册</h2>
+    </div>
+    <div class="card-body">
+      <form method="post">
+    {% csrf_token %}
+    
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}
+        {% if field.name == 'password' or field.name == 'password2' %}
+          <div class="input-group">
+            <input type="password" name="{{ field.name }}" class="form-control" id="{{ field.id_for_label }}">
+            <span class="input-group-text bg-transparent border-start-0">
+                <i class="bi bi-eye-slash-fill text-white-50" id="toggle-{{ field.name }}"></i>
+            </span>
+          </div>
+        {% else %}
+          <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-control" id="{{ field.id_for_label }}">
+        {% endif %}
+
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <div class="alert alert-danger mt-1 p-2">{{ error }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">注册</button>
+    </div>
+</form>
+
+<script>
+// 获取元素
+const togglePassword1 = document.querySelector('#toggle-password');
+const passwordInput1 = document.querySelector('input[name="password"]');
+const togglePassword2 = document.querySelector('#toggle-password2');
+const passwordInput2 = document.querySelector('input[name="password2"]');
+
+// 添加点击事件
+togglePassword1.addEventListener('click', function (e) {
+    const type = passwordInput1.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput1.setAttribute('type', type);
+    this.classList.toggle('bi-eye-fill');
+    this.classList.toggle('bi-eye-slash-fill');
+});
+togglePassword2.addEventListener('click', function (e) {
+    const type = passwordInput2.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput2.setAttribute('type', type);
+    this.classList.toggle('bi-eye-fill');
+    this.classList.toggle('bi-eye-slash-fill');
+});
+</script>
+    </div>
+    <div class="card-footer text-center">
+        <a href="{% url 'login' %}">已经有账户了？点此登录</a>
+    </div>
+  </div>
+{% endblock %}

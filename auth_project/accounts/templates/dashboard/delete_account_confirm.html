@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}确认注销账户{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center text-danger">警告：您正在申请注销账户</h2>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">请务必仔细阅读！</h4>
+            <p>这是一个永久性操作，一旦确认，将无法撤销。</p>
+            <hr>
+            <p class="mb-0">执行此操作后，您的所有个人数据，包括用户名、博客文章、评论等，都将被**永久删除**，且无法恢复。</p>
+        </div>
+
+        <p class="text-white-50">如果您确认了解以上风险并仍然决定继续，请点击下方的按钮。</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-danger btn-lg">我确定，永久删除我的账户</button>
+                <a href="{% url 'home' %}" class="btn btn-secondary">不，我点错了，返回个人中心</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

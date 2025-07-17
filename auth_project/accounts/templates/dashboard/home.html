@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}个人中心{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-speedometer2"></i> 仪表盘
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-file-earmark-text"></i> 我的博客
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-gear"></i> 系统设置
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-people"></i> 用户管理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <form id="logout-form" action="{% url 'logout' %}" method="post" class="d-inline">
+        {% csrf_token %} <button type="submit" class="nav-link text-start w-100 border-0 bg-transparent">
+            <i class="bi bi-box-arrow-left"></i> 退出登录
+        </button>
+    </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom text-white">
+                    <h1 class="h2">仪表盘</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-light">分享</button>
+                            <button type="button" class="btn btn-sm btn-outline-light">导出</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-light dropdown-toggle">
+                            <i class="bi bi-calendar-week"></i> 本周
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">欢迎回来, {{ user.username }}!</h5>
+                                <p class="card-text">这是您的个人中心仪表盘，您可以在这里快速访问常用功能和查看最新动态。</p>
+                                <a href="#" class="btn btn-outline-info">查看通知</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">系统概览</h5>
+                                <p class="card-text">一些系统运行状态的简要信息会显示在这里。</p>
+                                <ul class="list-group list-group-flush bg-transparent">
+                                    <li class="list-group-item bg-transparent text-white-50">用户数量: 100</li>
+                                    <li class="list-group-item bg-transparent text-white-50">文章总数: 50</li>
+                                    <li class="list-group-item bg-transparent text-white-50">最近登录: 2024-07-30 10:00</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>最新动态</h2>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action bg-transparent text-white-50">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">新用户注册</h5>
+                            <small class="text-muted">3 天前</small>
+                        </div>
+                        <p class="mb-1">一位新用户加入了平台。</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action bg-transparent text-white-50">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">博客发布</h5>
+                            <small class="text-muted">1 周前</small>
+                        </div>
+                        <p class="mb-1">一篇新的技术博客发布了。</p>
+                    </a>
+                </div>
+            </main>
+        </div>
+        <div class="row mt-4">
+    <div class="col-12">
+        <div class="card border-danger">
+            <div class="card-header text-danger">账户安全</div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">注销账户</h5>
+                <p class="card-text">请注意：这是一个危险且不可逆的操作。您的所有数据都将被永久删除。</p>
+                <a href="{% url 'delete_account' %}" class="btn btn-danger">前往注销账户</a>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100; /* Behind the navbar */
+            padding: 48px 0 0; /* Height of navbar + spacing */
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar .nav-link {
+            font-weight: 500;
+            color: #f8f9fa; /* Light text for dark sidebar */
+        }
+
+        .sidebar .nav-link.active {
+            color: #f1c40f;
+        }
+
+        .sidebar .nav-link:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-heading {
+            font-size: .75rem;
+            text-transform: uppercase;
+        }
+
+        .navbar {
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+        }
+
+        .bi {
+            margin-right: 5px;
+            vertical-align: -3px;
+        }
+
+        main {
+            background-color: transparent !important; /* 确保主内容区域背景透明 */
+        }
+    </style>
+{% endblock %}
