@@ -1,0 +1,6 @@
+你好, {{ user.username }},
+
+请点击下面的链接来完成您的账户激活：
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+如果您没有注册本网站，请忽略此邮件。

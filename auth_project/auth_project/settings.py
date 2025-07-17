@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
+    'captcha',  # 添加这一行
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,19 @@ LOGOUT_REDIRECT_URL = '/'
 STATIC_URL = 'static/'
 # 添加这行，告诉 Django 我们项目的静态文件还存放在这个位置
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'accounts/static')]
+
+# auth_project/settings.py
+
+# ... 其他设置 ...
+
+# 邮件配置 (开发环境)
+# 告诉 Django 使用控制台作为邮件后端
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = '3422403944@qq.com'  # 你的邮箱
+EMAIL_HOST_PASSWORD = 'ofcmsbxkonjhchhh' # 你的邮箱应用专用密码
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

@@ -2,8 +2,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from captcha.fields import CaptchaField # 导入 CaptchaField
 
 class CustomUserCreationForm(UserCreationForm):
+    captcha = CaptchaField()
     class Meta(UserCreationForm.Meta):
         model = CustomUser
         # 只需要指定我们自定义模型中需要用户填写的字段
