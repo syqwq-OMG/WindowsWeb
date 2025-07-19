@@ -42,23 +42,22 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.Header>
-                        <CheckBox IsChecked="{Binding IsAllSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <CheckBox IsChecked="{Binding DataContext.IsAllSelected, 
+                                          RelativeSource={RelativeSource AncestorType=DataGrid}, 
+                                          Mode=TwoWay, 
+                                          UpdateSourceTrigger=PropertyChanged}"/>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding DataContext.SelectionChangedCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </CheckBox>
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" 
+                          VerticalAlignment="Center" 
+                          HorizontalAlignment="Center"
+                          Command="{Binding DataContext.SelectionChangedCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
                 <DataGridTextColumn Header="状态" Binding="{Binding IsLearned, Converter={StaticResource LearnedStatusConverter}}" Width="Auto" FontWeight="Bold" Foreground="Green"/>
-
                 <DataGridTextColumn Header="单词" Binding="{Binding Word}" Width="*"/>
                 <DataGridTextColumn Header="释义" Binding="{Binding Definition}" Width="3*"/>
                 <DataGridTextColumn Header="学习次数" Binding="{Binding LookupCount}" Width="Auto"/>
@@ -67,16 +66,48 @@
         </DataGrid>
 
         <Border Grid.Row="2" Background="{StaticResource ContentBackgroundBrush}" Padding="10" Margin="0,10,0,0"
-                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
-            <StackPanel Orientation="Horizontal">
-                <Button Content="标记为“已学会”" Command="{Binding MarkSelectedAsLearnedCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE930;"
-                        Visibility="{Binding ShowLearned, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                <Button Content="标记为“未学会”" Command="{Binding MarkSelectedAsForgottenCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE7A7;"
-                        Visibility="{Binding ShowLearned, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Button Content="标记为“已学会”" Command="{Binding MarkSelectedAsLearnedCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE930;"
+                    Visibility="{Binding ShowLearned, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
 
-                <Button Content="彻底删除" Command="{Binding DeleteSelectedCommand}" Style="{StaticResource DangerIconFunctionButtonStyle}" Tag="&#xE74D;" Margin="20,0,0,0"/>
-            </StackPanel>
+                    <Button Content="标记为“未学会”" Command="{Binding MarkSelectedAsForgottenCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE7A7;"
+                    Visibility="{Binding ShowLearned, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                    <Button Content="彻底删除" Command="{Binding DeleteSelectedCommand}" Style="{StaticResource DangerIconFunctionButtonStyle}" Tag="&#xE74D;" Margin="20,0,0,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Command="{Binding FreeReviewCommand}"
+                    Style="{StaticResource ReviewButtonStyle}"
+                    ToolTip="从所有生词中随机开始复习">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE8AB;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                            <TextBlock Text="自由复习"/>
+                            <TextBlock Text="{Binding AllUnlearnedWordsCount, StringFormat=' ({0})'}" Foreground="OrangeRed" FontWeight="Bold"
+                               Visibility="{Binding AllUnlearnedWordsCount, Converter={StaticResource IntToVisibilityConverter}}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding EbbinghausReviewCommand}"
+                    Style="{StaticResource ReviewButtonStyle}"
+                    Margin="10,0,0,0"
+                    ToolTip="根据艾宾浩斯遗忘曲线开始复习今天到期的单词">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE8E4;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                            <TextBlock Text="今日计划"/>
+                            <TextBlock Text="{Binding WordsToReviewCount, StringFormat=' ({0})'}" Foreground="OrangeRed" FontWeight="Bold"
+                               Visibility="{Binding WordsToReviewCount, Converter={StaticResource IntToVisibilityConverter}}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </Window>

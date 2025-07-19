@@ -10,13 +10,25 @@ namespace VoaDownloaderWpf
 {
     public class VocabBookViewModel : BaseViewModel
     {
-        private readonly List<VocabEntry> _allVocabEntries;
+        // 【核心修正1】移除这个私有的、会变陈旧的本地缓存
+        private List<VocabEntry> _allVocabEntries;
+
         public ObservableCollection<VocabEntry> VocabEntries { get; }
+        // 【新增】用于绑定到UI的、待复习单词数量
+        public int WordsToReviewCount { get; private set; }
+        // 【新增】用于自由复习的单词数量
+        public int AllUnlearnedWordsCount { get; private set; }
+
+        // 【修改】将一个复习命令改为两个
+        public ICommand EbbinghausReviewCommand { get; }
+        public ICommand FreeReviewCommand { get; }
+
 
         public ICommand MarkSelectedAsLearnedCommand { get; }
         public ICommand MarkSelectedAsForgottenCommand { get; }
         public ICommand DeleteSelectedCommand { get; }
         public ICommand SelectionChangedCommand { get; }
+        public ICommand ReviewWordsCommand { get; } // 【新增】复习单词命令
 
         private bool _showLearned;
         public bool ShowLearned
@@ -31,95 +43,110 @@ namespace VoaDownloaderWpf
             }
         }
 
-        // 【核心】用于绑定“全选”复选框的属性
         private bool? _isAllSelected;
         public bool? IsAllSelected
         {
             get => _isAllSelected;
             set
             {
-                // 只有当值发生变化时才执行，防止无限循环
+                // 【修正1】检查值是否真的改变，防止无限循环
                 if (_isAllSelected == value) return;
 
                 _isAllSelected = value;
 
-                // 如果IsAllSelected有确定的值(true/false)，则执行全选/全不选
+                // 【修正2】只有当IsAllSelected变为true或false时（即用户点击了全选框），才执行全选/全不选操作。
+                // 如果是中间状态(null)，则不执行任何操作。
                 if (_isAllSelected.HasValue)
                 {
                     SelectAll(_isAllSelected.Value);
                 }
+
                 OnPropertyChanged();
             }
         }
 
         public VocabBookViewModel()
         {
-            _allVocabEntries = VocabDataService.GetVocabList();
             VocabEntries = new ObservableCollection<VocabEntry>();
+
+            // 【核心修正2】构造函数不再需要加载数据到本地缓存
+            // _allVocabEntries = VocabDataService.GetVocabList();
 
             MarkSelectedAsLearnedCommand = new RelayCommand(_ => MarkSelected(true), _ => VocabEntries.Any(e => e.IsSelected));
             MarkSelectedAsForgottenCommand = new RelayCommand(_ => MarkSelected(false), _ => VocabEntries.Any(e => e.IsSelected));
             DeleteSelectedCommand = new RelayCommand(_ => DeleteSelected(), _ => VocabEntries.Any(e => e.IsSelected));
-
-            // 【核心】当单个复选框被点击时，触发此命令来更新“全选”复选框的状态
             SelectionChangedCommand = new RelayCommand(_ => UpdateSelectAllState());
 
+
+            // 【修改】初始化两个独立的复习命令
+            EbbinghausReviewCommand = new RelayCommand(
+                _ => OpenReviewWindow(VocabDataService.GetWordsForReview()),
+                _ => WordsToReviewCount > 0
+            );
+            FreeReviewCommand = new RelayCommand(
+                _ => OpenReviewWindow(VocabDataService.GetAllUnlearnedWords()),
+                _ => AllUnlearnedWordsCount > 0
+            );
+            // 首次加载时应用一次筛选
+            ApplyFilter();
+        }
+        // 【新增】打开背单词窗口的方法
+        // 【修改】OpenReviewWindow 现在接收一个列表作为参数
+        private void OpenReviewWindow(List<VocabEntry> wordsToReview)
+        {
+            var reviewViewModel = new WordReviewViewModel(wordsToReview);
+            var reviewWindow = new WordReviewWindow
+            {
+                DataContext = reviewViewModel
+            };
+            reviewWindow.ShowDialog();
+
+            _allVocabEntries = VocabDataService.GetVocabList();
+            ApplyFilter();
+        }
+        private void MarkSelected(bool asLearned)
+        {
+            var selectedEntries = VocabEntries.Where(e => e.IsSelected).ToList();
+            if (!selectedEntries.Any()) return;
+
+            VocabDataService.UpdateWordsStatus(selectedEntries, asLearned);
             ApplyFilter();
         }
 
-        private void MarkSelected(bool asLearned)
+        private void DeleteSelected()
         {
-            var selectedEntries = _allVocabEntries.Where(e => e.IsSelected).ToList();
+            var selectedEntries = VocabEntries.Where(e => e.IsSelected).ToList();
             if (!selectedEntries.Any()) return;
 
-            foreach (var entry in selectedEntries)
+            if (MessageBox.Show($"确定要从生词本中将这 {selectedEntries.Count} 个单词移入回收站吗？", "确认操作", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                entry.IsLearned = asLearned;
-                entry.IsSelected = false;
+                VocabDataService.SoftDeleteWords(selectedEntries);
+                ApplyFilter();
             }
-            VocabDataService.SaveVocabBookAsync();
-            ApplyFilter();
         }
 
         private void ApplyFilter()
         {
-            // 在过滤前，先解除所有条目的选中状态
-            foreach (var entry in _allVocabEntries)
-            {
-                entry.IsSelected = false;
-            }
+            var allEntries = VocabDataService.GetVocabList();
+
+            // 【优化】取消选中操作可以放到循环里，或者在SelectAll(false)里统一处理。
+            // 这里我们先清除旧数据，再加载新数据，所以之前的选中状态自然会消失。
 
             VocabEntries.Clear();
             var filtered = _showLearned
-                ? _allVocabEntries
-                : _allVocabEntries.Where(e => !e.IsLearned);
+                ? allEntries
+                : allEntries.Where(e => !e.IsLearned);
 
             foreach (var entry in filtered)
             {
                 VocabEntries.Add(entry);
             }
-            UpdateSelectAllState(); // 每次过滤后都要更新“全选”状态
+
+            // 加载完数据后，更新一次“全选”复选框的状态
+            UpdateSelectAllState();
+            UpdateReviewCount(); // 【新增】每次筛选后，都重新计算待复习数量
         }
 
-        private void DeleteSelected()
-        {
-            var selectedEntries = _allVocabEntries.Where(e => e.IsSelected).ToList();
-            if (!selectedEntries.Any()) return;
-
-            if (MessageBox.Show($"确定要从生词本中彻底删除这 {selectedEntries.Count} 个单词吗？\n此操作不可恢复。", "确认删除", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                VocabDataService.RemoveWords(selectedEntries);
-                foreach (var entry in selectedEntries)
-                {
-                    _allVocabEntries.Remove(entry);
-                }
-                ApplyFilter();
-            }
-        }
-
-        /// <summary>
-        /// 执行全选或全不选
-        /// </summary>
         private void SelectAll(bool isSelected)
         {
             foreach (var entry in VocabEntries)
@@ -131,26 +158,41 @@ namespace VoaDownloaderWpf
         }
 
         /// <summary>
-        /// 根据当前列表中各项的选中状态，更新“全选”复选框的状态
+        /// 【新增】一个专门的方法，用于更新待复习单词的数量
         /// </summary>
+        private void UpdateReviewCount()
+        {
+            WordsToReviewCount = VocabDataService.GetWordsForReview().Count;
+            AllUnlearnedWordsCount = VocabDataService.GetAllUnlearnedWords().Count; // 【新增】
+            OnPropertyChanged(nameof(WordsToReviewCount));
+            OnPropertyChanged(nameof(AllUnlearnedWordsCount)); // 【新增】
+        }
         private void UpdateSelectAllState()
         {
-            if (VocabEntries.All(e => e.IsSelected))
+            // 这个方法现在由单个CheckBox的Command触发
+            if (!VocabEntries.Any())
             {
-                // 如果列表为空，IsAllSelected应为false
-                IsAllSelected = VocabEntries.Any();
+                // 【修正3】直接设置私有字段_isAllSelected并调用OnPropertyChanged，以避免触发setter中的SelectAll逻辑。
+                // 这样做更安全，可以防止不必要的循环更新。
+                _isAllSelected = false;
+            }
+            else if (VocabEntries.All(e => e.IsSelected))
+            {
+                _isAllSelected = true;
             }
             else if (VocabEntries.Any(e => e.IsSelected))
             {
-                IsAllSelected = null; // 部分选中，显示为中间状态
+                _isAllSelected = null; // 中间状态
             }
             else
             {
-                IsAllSelected = false; // 全不选
+                _isAllSelected = false;
             }
+
+            // 手动通知UI更新IsAllSelected属性
+            OnPropertyChanged(nameof(IsAllSelected));
         }
 
-        // 辅助方法，用于在全选后强制刷新UI
         private void RefreshObservableCollection()
         {
             var items = VocabEntries.ToList();
@@ -159,7 +201,6 @@ namespace VoaDownloaderWpf
             {
                 VocabEntries.Add(item);
             }
-            // 刷新后，重新计算并更新“全选”复选框的状态
             UpdateSelectAllState();
         }
     }

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿// VocabDataService.cs
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,92 +9,128 @@ namespace VoaDownloaderWpf
 {
     public static class VocabDataService
     {
-        private static List<VocabEntry> _vocabList;
-        private static readonly string _filePath;
+        private static List<VocabEntry> _vocabList; // 继续使用内存列表作为缓存
 
-        // 静态构造函数：在程序生命周期中只执行一次，确保路径和列表的初始化
-        static VocabDataService()
+        // 应用启动时，从数据库加载数据到内存缓存
+        public static void LoadVocabBookFromDb()
         {
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string appFolder = Path.Combine(appDataPath, "VoaDownloaderWpf");
-            Directory.CreateDirectory(appFolder);
-            _filePath = Path.Combine(appFolder, "vocab.json");
-            _vocabList = new List<VocabEntry>(); // 初始化为空列表
-        }
-
-        // 从JSON文件加载生词本到内存 (最关键的修复)
-        public static void LoadVocabBook()
-        {
-            if (!File.Exists(_filePath))
+            using (var db = new VocabDbContext())
             {
-                // 如果文件不存在，确保列表是空的，然后直接返回
-                _vocabList.Clear();
-                return;
-            }
-
-            try
-            {
-                string json = File.ReadAllText(_filePath);
-                // 【核心修正】: 使用赋值操作(=)来完全替换内存中的列表。
-                // 这确保了无论此方法被调用多少次，内存中的数据都只等于文件中的数据，永远不会重复累加。
-                _vocabList = JsonConvert.DeserializeObject<List<VocabEntry>>(json) ?? new List<VocabEntry>();
-            }
-            catch (Exception)
-            {
-                // 如果文件损坏，则清空列表，保证程序不会因错误数据崩溃
-                _vocabList.Clear();
+                // 只加载未被软删除的单词
+                _vocabList = db.VocabEntries.Where(e => !e.IsDeleted).ToList();
             }
         }
 
-        // 保存方法 (保持不变)
-        public static async Task SaveVocabBookAsync()
-        {
-            string json = JsonConvert.SerializeObject(_vocabList, Formatting.Indented);
-            await Task.Run(() => File.WriteAllText(_filePath, json));
-        }
-
-        // 添加或更新方法 (保持不变)
+        // 添加或更新一个单词
         public static void AddOrUpdateWord(string word, string definition)
         {
-            if (string.IsNullOrWhiteSpace(word) || string.IsNullOrWhiteSpace(definition)) return;
-            var existingEntry = _vocabList.FirstOrDefault(e => e.Word.Equals(word, StringComparison.OrdinalIgnoreCase));
-            if (existingEntry != null)
+            using (var db = new VocabDbContext())
             {
-                existingEntry.LookupCount++;
-            }
-            else
-            {
-                var newEntry = new VocabEntry
+                // 【核心修正】修正后的代码
+                var existingEntry = db.VocabEntries.FirstOrDefault(e => e.Word.ToLower() == word.ToLower());
+                if (existingEntry != null)
                 {
-                    Word = word,
-                    Definition = definition,
-                    DateAdded = DateTime.Now,
-                    LookupCount = 1,
-                    IsLearned = false // 【新增】确保新词默认为“未学会”
-                };
-                _vocabList.Add(newEntry);
+                    // 如果存在，增加复习次数，更新复习时间
+                    existingEntry.ReviewCount++;
+                    existingEntry.LastReviewDate = DateTime.Now;
+                    // 如果它之前被删除了，现在恢复它
+                    existingEntry.IsDeleted = false;
+                }
+                else
+                {
+                    // 如果不存在，创建新条目
+                    var newEntry = new VocabEntry
+                    {
+                        Word = word,
+                        Definition = definition,
+                        DateAdded = DateTime.Now,
+                        LastReviewDate = DateTime.Now,
+                        ReviewCount = 1,
+                        IsLearned = false,
+                        IsDeleted = false
+                    };
+                    db.VocabEntries.Add(newEntry);
+                }
+                db.SaveChanges(); // 保存所有更改到数据库
             }
-            _ = SaveVocabBookAsync();
+            LoadVocabBookFromDb(); // 重新加载内存缓存
         }
 
-        // 【新增】从生词本中彻底删除多个单词
-        public static void RemoveWords(List<VocabEntry> wordsToRemove)
+        // 更新多个单词的状态（已学会/未学会）
+        public static void UpdateWordsStatus(List<VocabEntry> wordsToUpdate, bool isLearned)
         {
-            if (wordsToRemove == null || !wordsToRemove.Any()) return;
+            using (var db = new VocabDbContext())
+            {
+                var wordIds = wordsToUpdate.Select(w => w.Id).ToList();
+                var entriesInDb = db.VocabEntries.Where(e => wordIds.Contains(e.Id)).ToList();
 
-            // 为了高效删除，将要删除的单词存入HashSet
-            var wordsToRemoveSet = new HashSet<string>(wordsToRemove.Select(w => w.Word));
-
-            _vocabList.RemoveAll(entry => wordsToRemoveSet.Contains(entry.Word));
-
-            // 保存更改
-            _ = SaveVocabBookAsync();
+                foreach (var entry in entriesInDb)
+                {
+                    entry.IsLearned = isLearned;
+                    entry.LastReviewDate = DateTime.Now; // 标记状态也算一次复习
+                }
+                db.SaveChanges();
+            }
+            LoadVocabBookFromDb();
         }
 
-        // 获取列表方法 (保持不变)
+        // 软删除多个单词
+        public static void SoftDeleteWords(List<VocabEntry> wordsToDelete)
+        {
+            using (var db = new VocabDbContext())
+            {
+                var wordIds = wordsToDelete.Select(w => w.Id).ToList();
+                var entriesInDb = db.VocabEntries.Where(e => wordIds.Contains(e.Id)).ToList();
+
+                foreach (var entry in entriesInDb)
+                {
+                    entry.IsDeleted = true;
+                }
+                db.SaveChanges();
+            }
+            LoadVocabBookFromDb();
+        }
+
+        // 获取列表方法 (保持不变，从内存缓存读取)
         public static List<VocabEntry> GetVocabList()
         {
-            return new List<VocabEntry>(_vocabList);
+            return _vocabList ?? new List<VocabEntry>();
+        }
+
+        /// <summary>
+        /// 【核心新增】根据艾宾浩斯遗忘曲线获取今天需要复习的单词列表
+        /// </summary>
+        public static List<VocabEntry> GetWordsForReview()
+        {
+            // 艾宾浩斯曲线的典型复习周期（单位：天）
+            // 第1天、第2天、第4天、第7天、第15天...
+            int[] reviewIntervals = { 1, 2, 4, 7, 15, 30, 60, 90 };
+
+            using (var db = new VocabDbContext())
+            {
+                var today = DateTime.Today;
+
+                // 我们只筛选那些“未学会”且“未被删除”的单词
+                return db.VocabEntries
+                    .Where(e => !e.IsDeleted && !e.IsLearned)
+                    .ToList() // 将数据加载到内存中进行日期计算
+                    .Where(word => {
+                        // 计算从添加日期到今天过去了多少天
+                        var daysPassed = (today - word.DateAdded.Date).TotalDays;
+                        // 如果今天正好是某个复习周期日，则该单词需要复习
+                        return reviewIntervals.Contains((int)daysPassed);
+                    })
+                    .ToList();
+            }
+        }
+
+        // 【新增】获取所有未学会的单词，用于自由复习
+        public static List<VocabEntry> GetAllUnlearnedWords()
+        {
+            using (var db = new VocabDbContext())
+            {
+                return db.VocabEntries.Where(e => !e.IsDeleted && !e.IsLearned).ToList();
+            }
         }
     }
 }

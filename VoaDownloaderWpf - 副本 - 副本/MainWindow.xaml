@@ -26,7 +26,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" Margin="0,0,10,0">
+        <Border Grid.Column="0" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" Margin="0,0,10,0" Style="{StaticResource InteractiveCardStyle}">
             <DockPanel>
                 <StatusBar DockPanel.Dock="Bottom" Background="Transparent" Margin="10,5">
                     <StatusBarItem>
@@ -78,7 +78,7 @@
         </Border>
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"/>
 
-        <Border Grid.Column="2" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" Margin="0,0,10,0">
+        <Border Grid.Column="2" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" Margin="0,0,10,0" >
             <DataGrid ItemsSource="{Binding Articles}"
                       Style="{StaticResource ModernDataGridStyle}"
                       ColumnHeaderStyle="{StaticResource ModernDataGridColumnHeaderStyle}"
@@ -109,7 +109,7 @@
         </Border>
         <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"/>
 
-        <Border Grid.Column="4" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8">
+        <Border Grid.Column="4" Background="{StaticResource ContentBackgroundBrush}" CornerRadius="8" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

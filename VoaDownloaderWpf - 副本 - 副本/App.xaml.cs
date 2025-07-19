@@ -1,4 +1,5 @@
 ﻿// App.xaml.cs
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using System.Windows;
@@ -24,8 +25,14 @@ namespace VoaDownloaderWpf
                 await DictionaryService.LoadDictionaryAsync(dictionaryPath);
             }
 
-            // 【新增】加载生词本数据
-            VocabDataService.LoadVocabBook();
+            // 【新增】确保数据库在启动时被创建
+            using (var db = new VocabDbContext())
+            {
+                db.Database.Migrate();
+            }
+
+            // 【修改】从数据库加载生词本数据
+            VocabDataService.LoadVocabBookFromDb();
             base.OnStartup(e);
         }
 

@@ -8,5 +8,8 @@
     <Compile Update="VocabBookWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WordReviewWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
