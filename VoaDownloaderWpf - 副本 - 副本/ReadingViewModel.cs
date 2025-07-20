@@ -124,6 +124,7 @@ namespace VoaDownloaderWpf
         public ICommand ExportNotesCommand { get; private set; }
         // 【新增】新的保存命令
         public ICommand SaveOrUpdateNotesCommand { get; private set; }
+        public ICommand AddToPhraseBookCommand { get; private set; } // 【新增】
 
         #region Constructors
 
@@ -220,7 +221,22 @@ namespace VoaDownloaderWpf
             });
             // 【新增】初始化新的保存命令
             SaveOrUpdateNotesCommand = new RelayCommand(async _ => await SaveOrUpdateNotesAsync(), _ => !IsBusy);
+            // 【新增】初始化新命令
+            AddToPhraseBookCommand = new RelayCommand(
+                _ => AddSelectionToPhraseBook(),
+                _ => !string.IsNullOrEmpty(_view?.GetSelectedText()) // 只有选中了文本才能收藏
+            );
+        }
 
+        // 【新增】将选中内容添加到积累本的方法
+        private void AddSelectionToPhraseBook()
+        {
+            string selectedText = _view?.GetSelectedText();
+            if (!string.IsNullOrEmpty(selectedText))
+            {
+                PhraseDataService.AddPhrase(selectedText, ArticleTitle);
+                StatusText = "已成功收藏！";
+            }
         }
 
         // 【新增】统一的保存/更新逻辑

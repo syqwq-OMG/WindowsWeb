@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VoaDownloaderWpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d2aef6f37781ffffb0e8687b0d0724e7ec3948b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1b05eb42a09a6752bf327a1774b5a71c9cbdcbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("VoaDownloaderWpf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VoaDownloaderWpf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

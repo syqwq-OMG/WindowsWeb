@@ -9,7 +9,8 @@ namespace VoaDownloaderWpf
     {
         // 这个属性代表了数据库中的一张表
         public DbSet<VocabEntry> VocabEntries { get; set; }
-
+        // 【新增】为“积累本”创建一张名为 PhraseEntries 的新表
+        public DbSet<PhraseEntry> PhraseEntries { get; set; }
         private readonly string _dbPath;
 
         public VocabDbContext()

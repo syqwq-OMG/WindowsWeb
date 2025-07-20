@@ -1,0 +1,75 @@
+﻿<Window x:Class="VoaDownloaderWpf.PhraseBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VoaDownloaderWpf"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="我的积累本" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Window.DataContext>
+        <local:PhraseBookViewModel/>
+    </Window.DataContext>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" ItemsSource="{Binding PhraseEntries}"
+                  Style="{StaticResource ModernDataGridStyle}"
+                  ColumnHeaderStyle="{StaticResource ModernDataGridColumnHeaderStyle}"
+                  RowStyle="{StaticResource ModernDataGridRowStyle}"
+                  CellStyle="{StaticResource ModernDataGridCellStyle}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="Auto">
+    <DataGridTemplateColumn.Header>
+        <CheckBox IsChecked="{Binding DataContext.IsAllSelected, 
+                                      RelativeSource={RelativeSource AncestorType=DataGrid}, 
+                                      Mode=TwoWay, 
+                                      UpdateSourceTrigger=PropertyChanged}"/>
+    </DataGridTemplateColumn.Header>
+    <DataGridTemplateColumn.CellTemplate>
+        <DataTemplate>
+            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" 
+                      VerticalAlignment="Center" 
+                      HorizontalAlignment="Center"
+                      Command="{Binding DataContext.SelectionChangedCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+        </DataTemplate>
+    </DataGridTemplateColumn.CellTemplate> </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="内容" Width="3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Content}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                <DataGridTextColumn Header="来源文章" Binding="{Binding SourceArticleTitle}" Width="*"/>
+                <DataGridTextColumn Header="收藏日期" Binding="{Binding DateAdded, StringFormat='yyyy-MM-dd'}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="1" Background="{StaticResource ContentBackgroundBrush}" Padding="10" Margin="0,10,0,0"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="删除选中项" Command="{Binding DeleteSelectedCommand}" 
+                Style="{StaticResource DangerIconFunctionButtonStyle}" Tag="&#xE74D;"/>
+
+                <Button Grid.Column="1" Content="导出积累本" Command="{Binding ExportCommand}" 
+                Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xEC7A;"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\App.xaml
-5-943792091
+61645469003
 
-28-1559608345
+34941495994
 230-809670139
-MainWindow.xaml;ReadingWindow.xaml;Styles\SharedResources.xaml;VocabBookWindow.xaml;WordReviewWindow.xaml;
+MainWindow.xaml;PhraseBookWindow.xaml;ReadingWindow.xaml;Styles\SharedResources.xaml;VocabBookWindow.xaml;WordReviewWindow.xaml;
 
 False
 

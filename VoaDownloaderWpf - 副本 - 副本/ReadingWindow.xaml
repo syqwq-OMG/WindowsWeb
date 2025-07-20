@@ -254,6 +254,13 @@
                     <Button Content="高亮" ToolTip="荧光笔" Command="{Binding HighlightCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE7B5;"/>
                     <Button Content="划线" ToolTip="下划线" Command="{Binding UnderlineCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE804;"/>
                     <Button Content="橡皮" ToolTip="清除格式" Command="{Binding EraserCommand}" Style="{StaticResource IconFunctionButtonStyle}" Tag="&#xE75C;"/>
+
+                    <Button Content="收藏" 
+                ToolTip="将选中的句子加入积累本" 
+                Command="{Binding AddToPhraseBookCommand}" 
+                Style="{StaticResource IconFunctionButtonStyle}" 
+                Tag="&#xE734;"
+                Margin="10,0,0,0"/>
                     <Separator Margin="10,0"/>
                     <Button Content="保存笔记" 
                         ToolTip="保存在线文章或更新本地笔记" 

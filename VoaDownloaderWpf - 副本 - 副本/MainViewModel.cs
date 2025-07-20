@@ -68,6 +68,7 @@ namespace VoaDownloaderWpf
         public ICommand OpenVocabBookCommand { get; }
         // 【新增】打开笔记的命令
         public ICommand OpenNoteCommand { get; }
+        public ICommand OpenPhraseBookCommand { get; } // 【新增】
 
         public MainViewModel()
         {
@@ -85,12 +86,21 @@ namespace VoaDownloaderWpf
             OpenVocabBookCommand = new RelayCommand(_ => OpenVocabBookWindow());
             // 【新增】初始化新命令
             OpenNoteCommand = new RelayCommand(_ => OpenNote());
+            // 【新增】初始化新命令
+            OpenPhraseBookCommand = new RelayCommand(_ => OpenPhraseBookWindow());
 
             // ------------------------------------
 
             // ########## 优化 1：改进 ViewModel 的异步加载方式 ##########
             // 在构造函数中调用一个 async void 方法
             LoadInitialDataAsync();
+        }
+
+        // 【新增】打开积累本窗口的方法
+        private void OpenPhraseBookWindow()
+        {
+            var phraseBookWindow = new PhraseBookWindow(); // ViewModel已在XAML中创建
+            phraseBookWindow.Show();
         }
 
         // 【新增】打开本地笔记的完整逻辑

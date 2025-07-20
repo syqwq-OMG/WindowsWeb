@@ -239,3 +239,5 @@ D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\bin\Debug\net8.0-wind
 D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\obj\Debug\net8.0-windows\WordReviewWindow.g.cs
 D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\obj\Debug\net8.0-windows\WordReviewWindow.baml
+D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\obj\Debug\net8.0-windows\PhraseBookWindow.g.cs
+D:\Workspace\WindowsWeb\VoaDownloaderWpf - 副本 - 副本\obj\Debug\net8.0-windows\PhraseBookWindow.baml
